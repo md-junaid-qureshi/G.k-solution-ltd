@@ -37,7 +37,7 @@ export type SocialLink = {
 export const socialLinks: SocialLink[] = [
   {
     label: "Instagram",
-    href: "https://instagram.com/gkspacesolutions",
+    href: "https://www.instagram.com/gk_space_solutions?stkn=MXI3emltMmJ4bmJtdA==",
     icon: "instagram",
   },
   {

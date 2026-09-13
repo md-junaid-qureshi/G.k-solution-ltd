@@ -252,6 +252,12 @@ export default function Navbar() {
               <Mail size={12} strokeWidth={1.25} className="text-[var(--accent-gold)]" />
               <span>{company.email}</span>
             </a>
+
+            <div className="mt-4 pt-3 border-t border-[var(--border-primary)]/40 flex items-center gap-3">
+              {socialLinks.map((link) => (
+                <SocialIcon key={link.label} link={link} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

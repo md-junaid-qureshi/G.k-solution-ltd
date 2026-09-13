@@ -26,6 +26,25 @@ export default function ProjectsGallery() {
       ? projectsData
       : projectsData.filter((p) => p.category === activeCategory);
 
+  const handleInquireClick = (e: React.MouseEvent, projectTitle: string) => {
+    if (typeof window !== "undefined") {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        e.preventDefault();
+        setSelectedProject(null);
+        contactSection.scrollIntoView({ behavior: "smooth" });
+
+        const input = document.getElementById("inquiry-project") as HTMLInputElement | null;
+        if (input) {
+          input.value = projectTitle;
+          input.focus();
+        }
+
+        window.history.replaceState(null, "", `#contact?project=${encodeURIComponent(projectTitle)}`);
+      }
+    }
+  };
+
   return (
     <div className="relative w-full">
       {/* ── Filter Bar ─────────────────────────────────────────── */}
@@ -138,11 +157,12 @@ export default function ProjectsGallery() {
                     </span>
                   </div>
                   <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-1 font-semibold uppercase tracking-wider text-[var(--text-primary)] group-hover:text-[var(--accent-gold)] transition-colors flex-shrink-0"
+                    href={`/contact?project=${encodeURIComponent(project.title)}`}
+                    onClick={(e) => handleInquireClick(e, project.title)}
+                    className="text-xs font-semibold tracking-wider text-neutral-900 dark:text-neutral-100 hover:text-[#DFB163] transition-colors flex items-center gap-1"
                   >
-                    Inquire
-                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.25} />
+                    INQUIRE
+                    <ArrowUpRight className="h-3.5 w-3.5 text-[#DFB163]" />
                   </Link>
                 </div>
               </div>
@@ -190,7 +210,8 @@ export default function ProjectsGallery() {
                     </h3>
                   </div>
                   <Link
-                    href="/contact"
+                    href={`/contact?project=${encodeURIComponent(selectedProject.title)}`}
+                    onClick={(e) => handleInquireClick(e, selectedProject.title)}
                     className="inline-flex items-center gap-2 bg-[var(--accent-gold)] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-neutral-950 hover:bg-neutral-100 transition-colors"
                   >
                     Inquire On This Project

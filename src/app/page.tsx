@@ -15,6 +15,7 @@ import {
 import ProjectShowcase from "@/components/ProjectShowcase";
 import HeroSlider from "@/components/HeroSlider";
 import ArchitecturalStatsBand from "@/components/ArchitecturalStatsBand";
+import HomeContact from "@/components/HomeContact";
 import {
   company,
   companyStats,
@@ -237,44 +238,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 6. CONSULTATION & CTA BANNER (Rich Obsidian Aesthetic) ── */}
-      <section className="relative py-20 bg-[#0B0B0C] text-[#F5F5F0] overflow-hidden border-t border-neutral-800">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#DFB163_1px,transparent_1px)] [background-size:24px_24px]" />
-        
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
-          <span className="text-xs font-semibold tracking-[0.25em] text-[#DFB163] uppercase">
-            Start Your Project
-          </span>
-          <h2 className="mt-4 max-w-3xl font-heading text-3xl sm:text-5xl text-[#F5F5F0] tracking-tight">
-            Ready to Translate Your Architectural Vision Into Reality?
-          </h2>
-          <p className="mt-4 max-w-xl text-sm sm:text-base text-neutral-400 leading-relaxed font-sans">
-            Connect with our principal contracting engineers for BOQ analysis, technical feasibility, or turnkey consultation.
-          </p>
-
-          <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#DFB163] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#0B0B0C] transition-all duration-300 hover:bg-white hover:shadow-lg"
-            >
-              Book Discovery Session
-              <ArrowRight className="h-4 w-4" strokeWidth={1.25} />
-            </Link>
-
-            <a
-              href="tel:+919820401179"
-              className="inline-flex items-center justify-center gap-2 border border-neutral-700 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#F5F5F0] transition-all duration-300 hover:border-[#DFB163]"
-            >
-              <Phone className="h-4 w-4 text-[#DFB163]" strokeWidth={1.25} />
-              +91 98204 01179
-            </a>
-          </div>
-
-          <p className="mt-6 text-xs text-neutral-400 font-mono">
-            Direct Email: {company.email}
-          </p>
-        </div>
-      </section>
+      {/* ── 6. CONSULTATION & INQUIRY (Rich Obsidian Aesthetic with #contact) ── */}
+      <HomeContact />
     </div>
   );
 }
