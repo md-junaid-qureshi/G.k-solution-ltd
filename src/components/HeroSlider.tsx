@@ -120,7 +120,7 @@ export default function HeroSlider() {
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative min-h-[85vh] sm:min-h-[90vh] h-[100dvh] max-h-[1080px] flex items-center justify-center overflow-hidden bg-[#0B0B0C] text-[#F5F5F0] select-none"
+      className="relative h-[780px] sm:h-[840px] md:h-[880px] lg:h-[920px] flex items-center justify-center overflow-hidden bg-[#0B0B0C] text-[#F5F5F0] select-none"
     >
       {/* ── Background Slides with Ken Burns Slow-Zoom Effect ── */}
       <AnimatePresence mode="sync">
@@ -164,7 +164,7 @@ export default function HeroSlider() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center max-w-4xl w-full"
+            className="flex flex-col items-center justify-center max-w-4xl w-full min-h-[380px] sm:min-h-[420px] md:min-h-[460px]"
           >
             {/* Top Editorial Pill */}
             <div className="inline-flex items-center gap-2 rounded-full border border-[#DFB163]/40 bg-[#0B0B0C]/80 px-3.5 py-1 sm:px-4 sm:py-1.5 backdrop-blur-md">
@@ -174,15 +174,19 @@ export default function HeroSlider() {
               </span>
             </div>
 
-            {/* Main Headline - Clean Mobile Scaling */}
-            <h1 className="mt-6 sm:mt-8 font-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight text-[#F5F5F0] leading-tight sm:leading-[1.12]">
-              {slide.heading}
-            </h1>
+            {/* Main Headline - Stable Sized Container */}
+            <div className="mt-6 sm:mt-8 min-h-[64px] sm:min-h-[88px] md:min-h-[140px] lg:min-h-[160px] flex items-center justify-center w-full">
+              <h1 className="font-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight text-[#F5F5F0] leading-tight sm:leading-[1.12]">
+                {slide.heading}
+              </h1>
+            </div>
 
-            {/* Subheading */}
-            <p className="mt-4 sm:mt-6 max-w-2xl text-xs sm:text-base md:text-lg text-neutral-300 font-sans leading-relaxed px-2 sm:px-0">
-              {slide.subheading}
-            </p>
+            {/* Subheading - Stable Sized Container */}
+            <div className="mt-4 sm:mt-6 min-h-[44px] sm:min-h-[56px] flex items-center justify-center w-full">
+              <p className="max-w-2xl text-xs sm:text-base md:text-lg text-neutral-300 font-sans leading-relaxed px-2 sm:px-0">
+                {slide.subheading}
+              </p>
+            </div>
 
             {/* CTAs - Clean Vertical Stacking on Mobile */}
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0">
