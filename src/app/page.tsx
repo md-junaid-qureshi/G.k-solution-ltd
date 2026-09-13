@@ -201,7 +201,7 @@ export default function Home() {
 
               <div className="mt-8 p-6 bg-[var(--bg-surface)] border border-[var(--border-primary)]">
                 <div className="flex items-start gap-4">
-                  <div className="rounded-full bg-[#141415] dark:bg-[#0B0B0C] p-2.5 text-[#DFB163] border border-neutral-800">
+                  <div className="rounded-full bg-[var(--bg-primary)] p-2.5 text-[var(--accent-gold)] border border-[var(--border-primary)]">
                     <Hammer className="h-5 w-5" strokeWidth={1.25} />
                   </div>
                   <div>

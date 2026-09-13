@@ -66,7 +66,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300">
       {/* ── Compact 1-Line Topbar on Mobile / Full on Desktop ─ */}
       <div
-        className={`border-b border-[var(--border-primary)] bg-[var(--bg-surface)]/95 backdrop-blur-sm transition-all duration-500 ${
+        className={`border-b border-[#EBE7DF] dark:border-[var(--border-primary)] bg-[#FBF9F5]/95 dark:bg-[var(--bg-surface)]/95 backdrop-blur-sm transition-all duration-500 ${
           scrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100"
         }`}
       >
@@ -97,14 +97,14 @@ export default function Navbar() {
 
       {/* ── Main Nav ────────────────────────────────────── */}
       <nav
-        className={`border-b border-[var(--border-primary)] bg-[var(--bg-surface)]/95 backdrop-blur-md transition-shadow duration-300 ${
-          scrolled ? "shadow-md" : ""
+        className={`border-b border-[#EBE7DF] dark:border-[var(--border-primary)] bg-[#FBF9F5]/95 dark:bg-[var(--bg-surface)]/95 backdrop-blur-md transition-shadow duration-300 ${
+          scrolled ? "shadow-sm" : ""
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3">
           {/* Logo & Brand Lockup */}
           <Link href="/" className="group flex items-center gap-3">
-            <div className="overflow-hidden rounded-md border border-neutral-800 bg-[#121212] p-1 shadow-sm flex-shrink-0">
+            <div className="overflow-hidden rounded-md border border-[#EBE7DF] dark:border-neutral-800 bg-white dark:bg-[#141415] p-1 shadow-sm flex-shrink-0">
               <Image
                 src="/logo.jpeg"
                 alt="GK Space Solutions LLP"
@@ -116,7 +116,7 @@ export default function Navbar() {
               />
             </div>
             <span className="font-serif tracking-widest text-base sm:text-lg font-bold uppercase text-[var(--text-primary)] transition-colors">
-              <span className="text-[#DFB163]">G</span>K SPACE SOLUTIONS LLP
+              <span className="text-[#C5A059]">G</span>K SPACE SOLUTIONS LLP
             </span>
           </Link>
 
