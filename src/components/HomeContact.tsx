@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useState, useActionState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Phone, Mail, ArrowRight, Send, CheckCircle2, ShieldCheck, Clock } from "lucide-react";
 import { submitContactInquiry, type ContactResponse } from "@/app/actions/contact";
@@ -11,6 +11,35 @@ export default function HomeContact() {
     submitContactInquiry,
     null
   );
+
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const digitsOnly = raw.replace(/\D/g, "").slice(0, 10);
+    setPhone(digitsOnly);
+    if (phoneError && digitsOnly.length === 10) {
+      setPhoneError("");
+    }
+  };
+
+  const handlePhoneBlur = () => {
+    if (phone && phone.length < 10) {
+      setPhoneError("Please enter a valid 10-digit mobile number.");
+    } else {
+      setPhoneError("");
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (phone.length < 10) {
+      e.preventDefault();
+      setPhoneError("Please enter a valid 10-digit mobile number.");
+      const input = document.getElementById("phone");
+      if (input) input.focus();
+    }
+  };
 
   const projectInputRef = useRef<HTMLInputElement>(null);
 
@@ -97,7 +126,7 @@ export default function HomeContact() {
                 </Link>
               </div>
             ) : (
-              <form action={formAction} className="space-y-5">
+              <form action={formAction} onSubmit={handleSubmit} className="space-y-5">
                 <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
                   <h3 className="font-heading text-xl text-[#F5F5F0]">
                     Direct Project Consultation
@@ -138,14 +167,29 @@ export default function HomeContact() {
                     >
                       Phone Number *
                     </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      required
-                      placeholder="+91 98200 00000"
-                      className="w-full bg-[#0B0B0C] border border-neutral-700 px-3.5 py-2.5 text-sm text-[#F5F5F0] placeholder:text-neutral-600 focus:outline-none focus:border-[#DFB163] transition-colors"
-                    />
+                    <div className="flex items-center bg-[#0B0B0C] border border-neutral-700 focus-within:border-[#DFB163] transition-colors">
+                      <span className="flex items-center px-3 py-2.5 border-r border-neutral-700 text-xs font-mono text-[#DFB163] select-none bg-neutral-900 font-medium">
+                        +91
+                      </span>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        inputMode="numeric"
+                        maxLength={10}
+                        required
+                        value={phone}
+                        onChange={handlePhoneChange}
+                        onBlur={handlePhoneBlur}
+                        placeholder="98204 01179"
+                        className="w-full bg-transparent px-3 py-2.5 text-sm text-[#F5F5F0] placeholder:text-neutral-600 focus:outline-none"
+                      />
+                    </div>
+                    {(phoneError || state?.errors?.phone) && (
+                      <p className="mt-1 text-xs text-red-400 font-sans">
+                        {phoneError || state?.errors?.phone}
+                      </p>
+                    )}
                   </div>
                 </div>
 

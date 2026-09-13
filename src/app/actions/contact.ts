@@ -34,8 +34,9 @@ export async function submitContactInquiry(
     errors.email = "Please provide a valid email address.";
   }
 
-  if (!phone || phone.length < 8) {
-    errors.phone = "Please provide a valid phone number.";
+  const cleanedPhone = phone ? phone.replace(/\D/g, "") : "";
+  if (!phone || cleanedPhone.length !== 10) {
+    errors.phone = "Please enter a valid 10-digit mobile number.";
   }
 
   if (!message || message.length < 5) {
