@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ─────────────────────────────────────── */
+
+:root {
+  --brand-dark: #111111;
+  --brand-brass: #C5A880;
+  --brand-light: #F9F8F6;
+  --brand-border: #E8E6E1;
+  --brand-muted: #6B6B6B;
+  --brand-white: #FFFFFF;
+}
+
+@theme inline {
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-brass: var(--brand-brass);
+  --color-brand-light: var(--brand-light);
+  --color-brand-border: var(--brand-border);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-white: var(--brand-white);
+
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+}
+
+/* ── Base Layer ─────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--brand-light);
+  color: var(--brand-dark);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--brand-brass);
+  color: var(--brand-white);
+}
+
+/* ── Utility Overrides ──────────────────────────────────── */
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Refined focus ring for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--brand-brass);
+  outline-offset: 2px;
+}
