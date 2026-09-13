@@ -120,7 +120,7 @@ export default function HeroSlider() {
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative min-h-[85vh] sm:min-h-[90vh] h-[100dvh] max-h-[1080px] flex items-center justify-center overflow-hidden bg-[var(--brand-dark)] text-[var(--brand-light)] select-none"
+      className="relative min-h-[85vh] sm:min-h-[90vh] h-[100dvh] max-h-[1080px] flex items-center justify-center overflow-hidden bg-[#0B0B0C] text-[#F5F5F0] select-none"
     >
       {/* ── Background Slides with Ken Burns Slow-Zoom Effect ── */}
       <AnimatePresence mode="sync">
@@ -149,8 +149,8 @@ export default function HeroSlider() {
           </motion.div>
 
           {/* Balanced Luxury Vignette Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)] via-[var(--brand-dark)]/65 to-[var(--brand-dark)]/85" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[var(--brand-dark)]/40 to-[var(--brand-dark)]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C] via-[#0B0B0C]/65 to-[#0B0B0C]/85" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#0B0B0C]/40 to-[#0B0B0C]/80" />
         </motion.div>
       </AnimatePresence>
 
@@ -167,20 +167,20 @@ export default function HeroSlider() {
             className="flex flex-col items-center max-w-4xl w-full"
           >
             {/* Top Editorial Pill */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-brass)]/40 bg-[var(--brand-dark)]/80 px-3.5 py-1 sm:px-4 sm:py-1.5 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-brass)]" />
-              <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.2em] text-[var(--brand-brass)] uppercase font-mono">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#DFB163]/40 bg-[#0B0B0C]/80 px-3.5 py-1 sm:px-4 sm:py-1.5 backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#DFB163]" />
+              <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.2em] text-[#DFB163] uppercase font-mono">
                 {slide.tagline}
               </span>
             </div>
 
             {/* Main Headline - Clean Mobile Scaling */}
-            <h1 className="mt-6 sm:mt-8 font-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight text-[var(--brand-light)] leading-tight sm:leading-[1.12]">
+            <h1 className="mt-6 sm:mt-8 font-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight text-[#F5F5F0] leading-tight sm:leading-[1.12]">
               {slide.heading}
             </h1>
 
             {/* Subheading */}
-            <p className="mt-4 sm:mt-6 max-w-2xl text-xs sm:text-base md:text-lg text-[var(--brand-muted)] font-sans leading-relaxed px-2 sm:px-0">
+            <p className="mt-4 sm:mt-6 max-w-2xl text-xs sm:text-base md:text-lg text-neutral-300 font-sans leading-relaxed px-2 sm:px-0">
               {slide.subheading}
             </p>
 
@@ -188,7 +188,7 @@ export default function HeroSlider() {
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0">
               <a
                 href="#projects"
-                className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-[var(--brand-brass)] px-6 sm:px-8 py-3 sm:py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-dark)] transition-all duration-300 hover:bg-[var(--brand-light)] hover:shadow-xl active:scale-[0.98]"
+                className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-[#DFB163] px-6 sm:px-8 py-3 sm:py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#0B0B0C] transition-all duration-300 hover:bg-white hover:shadow-xl active:scale-[0.98]"
               >
                 Explore Projects
                 <ArrowRight
@@ -201,9 +201,9 @@ export default function HeroSlider() {
                 href="https://wa.me/919820401179?text=Hello%20GK%20Space%20Solutions%2C%20I%20would%20like%20to%20schedule%20an%20architectural%20consultation."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-[var(--brand-border)]/50 bg-[var(--brand-dark)]/60 px-6 sm:px-8 py-3 sm:py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-light)] backdrop-blur-sm transition-all duration-300 hover:border-[var(--brand-brass)] hover:bg-[var(--brand-light)]/10 active:scale-[0.98]"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-neutral-700/60 bg-[#0B0B0C]/60 px-6 sm:px-8 py-3 sm:py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#F5F5F0] backdrop-blur-sm transition-all duration-300 hover:border-[#DFB163] hover:bg-white/10 active:scale-[0.98]"
               >
-                <MessageSquare className="h-4 w-4 text-[var(--brand-brass)]" strokeWidth={1.25} />
+                <MessageSquare className="h-4 w-4 text-[#DFB163]" strokeWidth={1.25} />
                 Schedule Consultation
               </a>
             </div>
@@ -211,10 +211,10 @@ export default function HeroSlider() {
         </AnimatePresence>
 
         {/* ── Slide Controls & Progress Bar Strip ── */}
-        <div className="mt-10 sm:mt-14 w-full max-w-4xl pt-6 sm:pt-8 border-t border-[var(--brand-border)]/30 flex items-center justify-between gap-4">
+        <div className="mt-10 sm:mt-14 w-full max-w-4xl pt-6 sm:pt-8 border-t border-neutral-800 flex items-center justify-between gap-4">
           {/* Slide Indicator Numbers */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="text-[11px] sm:text-xs font-mono tracking-widest text-[var(--brand-brass)]">
+            <span className="text-[11px] sm:text-xs font-mono tracking-widest text-[#DFB163]">
               0{current + 1}
             </span>
             <div className="flex items-center gap-1.5">
@@ -225,19 +225,19 @@ export default function HeroSlider() {
                   aria-label={`Jump to slide ${idx + 1}`}
                   className={`h-1.5 transition-all duration-500 rounded-full ${
                     current === idx
-                      ? "w-6 sm:w-8 bg-[var(--brand-brass)]"
-                      : "w-2.5 sm:w-3 bg-[var(--brand-border)]/50 hover:bg-[var(--brand-border)]"
+                      ? "w-6 sm:w-8 bg-[#DFB163]"
+                      : "w-2.5 sm:w-3 bg-neutral-700 hover:bg-neutral-600"
                   }`}
                 />
               ))}
             </div>
-            <span className="text-[11px] sm:text-xs font-mono tracking-widest text-[var(--brand-muted)]">
+            <span className="text-[11px] sm:text-xs font-mono tracking-widest text-neutral-400">
               0{slides.length}
             </span>
           </div>
 
           {/* Center: Subtle Status */}
-          <span className="text-[10px] sm:text-[11px] font-mono tracking-wider text-[var(--brand-muted)] uppercase hidden sm:inline truncate max-w-[240px]">
+          <span className="text-[10px] sm:text-[11px] font-mono tracking-wider text-neutral-400 uppercase hidden sm:inline truncate max-w-[240px]">
             {slide.est}
           </span>
 
@@ -247,7 +247,7 @@ export default function HeroSlider() {
               type="button"
               onClick={prevSlide}
               aria-label="Previous Slide"
-              className="p-2 sm:p-2.5 border border-[var(--brand-border)]/40 text-[var(--brand-light)] hover:border-[var(--brand-brass)] hover:text-[var(--brand-brass)] transition-colors backdrop-blur-sm bg-[var(--brand-dark)]/40 active:scale-95"
+              className="p-2 sm:p-2.5 border border-neutral-700 text-[#F5F5F0] hover:border-[#DFB163] hover:text-[#DFB163] transition-colors backdrop-blur-sm bg-[#0B0B0C]/40 active:scale-95"
             >
               <ChevronLeft className="h-4 w-4" strokeWidth={1.25} />
             </button>
@@ -255,7 +255,7 @@ export default function HeroSlider() {
               type="button"
               onClick={nextSlide}
               aria-label="Next Slide"
-              className="p-2 sm:p-2.5 border border-[var(--brand-border)]/40 text-[var(--brand-light)] hover:border-[var(--brand-brass)] hover:text-[var(--brand-brass)] transition-colors backdrop-blur-sm bg-[var(--brand-dark)]/40 active:scale-95"
+              className="p-2 sm:p-2.5 border border-neutral-700 text-[#F5F5F0] hover:border-[#DFB163] hover:text-[#DFB163] transition-colors backdrop-blur-sm bg-[#0B0B0C]/40 active:scale-95"
             >
               <ChevronRight className="h-4 w-4" strokeWidth={1.25} />
             </button>

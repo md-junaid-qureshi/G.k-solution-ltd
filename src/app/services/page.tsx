@@ -139,19 +139,19 @@ const whyGKHighlights = [
 
 export default function ServicesPage() {
   return (
-    <div className="flex flex-col bg-[var(--brand-white)] min-h-screen">
-      {/* ── 1. EDITORIAL HEADER ───────────────────────────────── */}
-      <section className="relative border-b border-[var(--brand-border)] bg-[var(--brand-dark)] text-[var(--brand-light)] py-16 sm:py-24">
+    <div className="flex flex-col bg-[var(--bg-primary)] min-h-screen transition-colors duration-300">
+      {/* ── 1. EDITORIAL HEADER (Cinematic Dark Obsidian) ────── */}
+      <section className="relative border-b border-neutral-800 bg-[#0B0B0C] text-[#F5F5F0] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-[var(--brand-brass)] uppercase">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-[#DFB163] uppercase">
               <Compass className="h-3.5 w-3.5" strokeWidth={1.25} />
               Single-Source Turnkey Contracting
             </span>
-            <h1 className="mt-4 font-heading text-3xl sm:text-5xl lg:text-6xl text-[var(--brand-light)] tracking-tight">
+            <h1 className="mt-4 font-heading text-3xl sm:text-5xl lg:text-6xl text-[#F5F5F0] tracking-tight">
               Turnkey Architectural & Interior Services
             </h1>
-            <p className="mt-4 text-sm sm:text-base text-[var(--brand-muted)] font-sans leading-relaxed">
+            <p className="mt-4 text-sm sm:text-base text-neutral-400 font-sans leading-relaxed">
               From bare-shell corporate civil fit-outs to bespoke residential millwork, GK Space Solutions LLP delivers single-source accountability with millimeter-level precision across Mumbai, Pune, and Maharashtra.
             </p>
           </div>
@@ -159,16 +159,16 @@ export default function ServicesPage() {
       </section>
 
       {/* ── 2. SCOPE OF OFFERINGS ─────────────────────────────── */}
-      <section className="py-20 bg-[var(--brand-light)] border-b border-[var(--brand-border)]">
+      <section className="py-20 bg-[var(--bg-surface)] border-b border-[var(--border-primary)] transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-2xl mb-16">
-            <span className="text-xs font-semibold tracking-[0.2em] text-[var(--brand-brass)] uppercase">
+            <span className="text-xs font-semibold tracking-[0.2em] text-[var(--accent-gold)] uppercase">
               Core Capabilities
             </span>
-            <h2 className="mt-2 font-heading text-3xl sm:text-4xl text-[var(--brand-dark)] tracking-tight">
+            <h2 className="mt-2 font-heading text-3xl sm:text-4xl text-[var(--text-primary)] tracking-tight">
               Four Specialized Execution Divisions
             </h2>
-            <p className="mt-3 text-sm text-[var(--brand-muted)] font-sans leading-relaxed">
+            <p className="mt-3 text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
               Every project is managed by specialized contracting engineers to ensure flawless civil construction, MEP integration, and fine architectural woodwork.
             </p>
           </div>
@@ -179,7 +179,7 @@ export default function ServicesPage() {
               return (
                 <div
                   key={service.id}
-                  className="p-8 sm:p-12 bg-[var(--brand-white)] border border-[var(--brand-border)] transition-all duration-300 hover:border-[var(--brand-brass)] hover:shadow-xl"
+                  className="p-8 sm:p-12 bg-[var(--bg-primary)] border border-[var(--border-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:shadow-xl"
                 >
                   <div
                     className={`grid grid-cols-1 lg:grid-cols-12 gap-10 items-center ${
@@ -194,36 +194,36 @@ export default function ServicesPage() {
                     >
                       <div>
                         <div className="flex items-center gap-3">
-                          <span className="font-heading text-3xl text-[var(--brand-brass)]">
+                          <span className="font-heading text-3xl text-[var(--accent-gold)]">
                             {service.number}
                           </span>
-                          <span className="h-px w-8 bg-[var(--brand-border)]" />
-                          <span className="text-xs font-mono tracking-widest uppercase text-[var(--brand-brass)] font-semibold">
+                          <span className="h-px w-8 bg-[var(--border-primary)]" />
+                          <span className="text-xs font-mono tracking-widest uppercase text-[var(--accent-gold)] font-semibold">
                             {service.category}
                           </span>
                         </div>
 
-                        <h3 className="mt-4 font-heading text-2xl sm:text-3xl text-[var(--brand-dark)] tracking-tight">
+                        <h3 className="mt-4 font-heading text-2xl sm:text-3xl text-[var(--text-primary)] tracking-tight">
                           {service.title}
                         </h3>
 
-                        <p className="mt-4 text-sm text-[var(--brand-muted)] leading-relaxed font-sans">
+                        <p className="mt-4 text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
                           {service.description}
                         </p>
 
                         {/* Deliverables List */}
-                        <div className="mt-6 pt-6 border-t border-[var(--brand-border)]">
-                          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--brand-dark)] font-semibold mb-3">
+                        <div className="mt-6 pt-6 border-t border-[var(--border-primary)]">
+                          <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-primary)] font-semibold mb-3">
                             Key Execution Scope:
                           </p>
                           <ul className="space-y-2">
                             {service.scopeItems.map((item) => (
                               <li
                                 key={item}
-                                className="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--brand-muted)]"
+                                className="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--text-secondary)]"
                               >
                                 <CheckCircle2
-                                  className="h-4 w-4 text-[var(--brand-brass)] flex-shrink-0 mt-0.5"
+                                  className="h-4 w-4 text-[var(--accent-gold)] flex-shrink-0 mt-0.5"
                                   strokeWidth={1.25}
                                 />
                                 <span>{item}</span>
@@ -234,14 +234,14 @@ export default function ServicesPage() {
                       </div>
 
                       {/* Technical Specs & Action */}
-                      <div className="mt-8 pt-6 border-t border-[var(--brand-border)] flex flex-wrap items-center justify-between gap-4">
+                      <div className="mt-8 pt-6 border-t border-[var(--border-primary)] flex flex-wrap items-center justify-between gap-4">
                         <div className="flex items-center gap-6">
                           {service.specs.map((spec) => (
                             <div key={spec.label}>
-                              <span className="text-[10px] font-mono text-[var(--brand-muted)] uppercase tracking-wider block">
+                              <span className="text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wider block">
                                 {spec.label}
                               </span>
-                              <span className="text-xs font-medium text-[var(--brand-dark)] block">
+                              <span className="text-xs font-medium text-[var(--text-primary)] block">
                                 {spec.value}
                               </span>
                             </div>
@@ -250,7 +250,7 @@ export default function ServicesPage() {
 
                         <Link
                           href="/contact"
-                          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--brand-dark)] hover:text-[var(--brand-brass)] transition-colors"
+                          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors"
                         >
                           Request Scope Analysis
                           <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.25} />
@@ -260,7 +260,7 @@ export default function ServicesPage() {
 
                     {/* Image Block */}
                     <div
-                      className={`lg:col-span-5 relative aspect-[4/3] overflow-hidden border border-[var(--brand-border)] bg-[var(--brand-dark)] ${
+                      className={`lg:col-span-5 relative aspect-[4/3] overflow-hidden border border-[var(--border-primary)] bg-[#0B0B0C] ${
                         isEven ? "lg:col-start-1" : ""
                       }`}
                     >
@@ -271,7 +271,7 @@ export default function ServicesPage() {
                         className="object-cover"
                         sizes="(max-width: 1024px) 100vw, 40vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/60 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/60 via-transparent to-transparent" />
                     </div>
                   </div>
                 </div>
@@ -282,31 +282,31 @@ export default function ServicesPage() {
       </section>
 
       {/* ── 3. WHY CHOOSE GK SPACE SOLUTIONS ──────────────────── */}
-      <section className="py-24 bg-[var(--brand-white)] border-b border-[var(--brand-border)]">
+      <section className="py-24 bg-[var(--bg-primary)] border-b border-[var(--border-primary)] transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-4">
-              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[var(--brand-brass)] uppercase">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[var(--accent-gold)] uppercase">
                 <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.25} />
                 Contracting Excellence
               </span>
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-[var(--brand-dark)] tracking-tight">
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-[var(--text-primary)] tracking-tight">
                 Why Architects and Enterprises Entrust Us
               </h2>
-              <p className="text-sm sm:text-base text-[var(--brand-muted)] leading-relaxed font-sans">
+              <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
                 We eliminate the traditional friction of multiple vendors by providing full lifecycle contracting under one roof—ensuring structural integrity, financial clarity, and exact design execution.
               </p>
 
-              <div className="p-6 bg-[var(--brand-light)] border border-[var(--brand-border)]">
+              <div className="p-6 bg-[var(--bg-surface)] border border-[var(--border-primary)]">
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 bg-[var(--brand-dark)] text-[var(--brand-brass)]">
+                  <div className="p-2.5 bg-[#141415] dark:bg-[#0B0B0C] text-[#DFB163] border border-neutral-800">
                     <Hammer className="h-5 w-5" strokeWidth={1.25} />
                   </div>
                   <div>
-                    <h4 className="font-heading text-base text-[var(--brand-dark)]">
+                    <h4 className="font-heading text-base text-[var(--text-primary)]">
                       In-House Millwork Facility
                     </h4>
-                    <p className="mt-1 text-xs text-[var(--brand-muted)] leading-relaxed font-sans">
+                    <p className="mt-1 text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
                       Our modern manufacturing facility houses advanced edge-banding, multi-axis sizing, and finishing chambers for turnkey joinery.
                     </p>
                   </div>
@@ -318,15 +318,15 @@ export default function ServicesPage() {
               {whyGKHighlights.map((pillar, idx) => (
                 <div
                   key={pillar.title}
-                  className="p-6 bg-[var(--brand-light)] border border-[var(--brand-border)] transition-all duration-300 hover:border-[var(--brand-brass)]"
+                  className="p-6 bg-[var(--bg-surface)] border border-[var(--border-primary)] transition-all duration-300 hover:border-[var(--accent-gold)]"
                 >
-                  <span className="text-xs font-mono text-[var(--brand-brass)] font-semibold">
+                  <span className="text-xs font-mono text-[var(--accent-gold)] font-semibold">
                     0{idx + 1}. PILLAR
                   </span>
-                  <h3 className="mt-2 font-heading text-xl text-[var(--brand-dark)]">
+                  <h3 className="mt-2 font-heading text-xl text-[var(--text-primary)]">
                     {pillar.title}
                   </h3>
-                  <p className="mt-2 text-xs sm:text-sm text-[var(--brand-muted)] leading-relaxed font-sans">
+                  <p className="mt-2 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
                     {pillar.description}
                   </p>
                 </div>
@@ -336,16 +336,16 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── 4. DIRECT CTA STRIP ───────────────────────────────── */}
-      <section className="py-20 bg-[var(--brand-dark)] text-[var(--brand-light)]">
+      {/* ── 4. DIRECT CTA STRIP (Rich Obsidian Aesthetic) ────── */}
+      <section className="py-20 bg-[#0B0B0C] text-[#F5F5F0]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center flex flex-col items-center">
-          <span className="text-xs font-semibold tracking-[0.25em] text-[var(--brand-brass)] uppercase">
+          <span className="text-xs font-semibold tracking-[0.25em] text-[#DFB163] uppercase">
             Start Your Execution Journey
           </span>
-          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl text-[var(--brand-light)] tracking-tight max-w-3xl">
+          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl text-[#F5F5F0] tracking-tight max-w-3xl">
             Discuss Your Project Scope with Our Principal Engineers
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[var(--brand-muted)] max-w-xl font-sans leading-relaxed">
+          <p className="mt-4 text-sm sm:text-base text-neutral-400 max-w-xl font-sans leading-relaxed">
             Connect directly with our engineering team for technical feasibility, BOQ analysis, or turnkey contracting estimates.
           </p>
 
@@ -354,7 +354,7 @@ export default function ServicesPage() {
               href="https://wa.me/919820401179?text=Hello%20GK%20Space%20Solutions%2C%20I%20would%20like%20to%20inquire%20about%20your%20turnkey%20architectural%20services."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 bg-[var(--brand-brass)] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-dark)] transition-all hover:bg-[var(--brand-light)] hover:shadow-xl"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#DFB163] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#0B0B0C] transition-all hover:bg-white hover:shadow-xl"
             >
               <MessageSquare className="h-4 w-4" strokeWidth={1.25} />
               WhatsApp Direct Consultation
@@ -362,22 +362,22 @@ export default function ServicesPage() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 border border-[var(--brand-border)]/50 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-light)] transition-all hover:border-[var(--brand-brass)] hover:bg-[var(--brand-light)]/5"
+              className="inline-flex items-center justify-center gap-2 border border-neutral-700 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#F5F5F0] transition-all hover:border-[#DFB163] hover:bg-white/5"
             >
               Contact Form & Location
               <ArrowRight className="h-4 w-4" strokeWidth={1.25} />
             </Link>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-[var(--brand-muted)] font-mono">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-400 font-mono">
             <a
               href="tel:+919820401179"
-              className="flex items-center gap-2 hover:text-[var(--brand-brass)] transition-colors"
+              className="flex items-center gap-2 hover:text-[#DFB163] transition-colors"
             >
-              <Phone className="h-3.5 w-3.5 text-[var(--brand-brass)]" strokeWidth={1.25} />
+              <Phone className="h-3.5 w-3.5 text-[#DFB163]" strokeWidth={1.25} />
               +91 98204 01179
             </a>
-            <span className="text-[var(--brand-border)]">|</span>
+            <span className="text-neutral-700">|</span>
             <span>Direct Email: {company.email}</span>
           </div>
         </div>

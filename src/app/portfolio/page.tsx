@@ -144,12 +144,13 @@ const slides: SlideData[] = [
       type: "casestudy",
       image: "/img/meetingroom.jpeg",
       stats: [
+        { label: "Contractor", value: "GK Space Solutions" },
         { label: "Built-up Area", value: "18,500 Sq. Ft." },
-        { label: "Project Duration", value: "75 Days" },
         { label: "Execution Model", value: "Full Turnkey" },
         { label: "Defect Rate", value: "0% at Handover" },
       ],
       highlights: [
+        "Single-source turnkey execution and civil engineering solely by GK Space Solutions LLP.",
         "Acoustic boardroom with automated lighting and motorized projection integration.",
         "Precision linear workstations with under-desk wire management and ergonomic baffles.",
         "Custom solid brass architectural trims on all executive suite entrance portals.",
@@ -166,12 +167,13 @@ const slides: SlideData[] = [
       type: "casestudy",
       image: "/img/portfolio-4.jpg",
       stats: [
+        { label: "Contractor", value: "GK Space Solutions" },
         { label: "Built-up Area", value: "12,000 Sq. Ft." },
-        { label: "Project Duration", value: "90 Days" },
         { label: "Execution Model", value: "Fit-out & Millwork" },
         { label: "Material Spec", value: "Grade-A Hardwood" },
       ],
       highlights: [
+        "In-house millwork and joinery manufactured and installed exclusively by GK Space Solutions LLP.",
         "Suspended sculptural architectural ceiling framing with integrated cove illumination.",
         "Custom veneer wall paneling bookmatched across expansive reception corridors.",
         "Specialized moisture-resistant joinery and hospitality-grade durability finishes.",
@@ -188,12 +190,13 @@ const slides: SlideData[] = [
       type: "casestudy",
       image: "/img/vfs_loge.jpeg",
       stats: [
+        { label: "Contractor", value: "GK Space Solutions" },
         { label: "Built-up Area", value: "8,500 Sq. Ft." },
-        { label: "Project Duration", value: "45 Days" },
         { label: "Security Spec", value: "Biometric & Access" },
         { label: "Sound Isolation", value: "STC 52 Certified" },
       ],
       highlights: [
+        "Turnkey planning, security compliance, and master fit-out delivered solely by GK Space Solutions LLP.",
         "High-security partition systems seamlessly cloaked in warm architectural wood paneling.",
         "VIP reception lounges with bespoke leather banquette seating crafted in our facility.",
         "Stringent international compliance and 24/7 accelerated site turnaround.",
@@ -259,20 +262,20 @@ export default function PortfolioPage() {
   const progressPercent = ((currentSlide + 1) / slides.length) * 100;
 
   return (
-    <div className="flex flex-col bg-[var(--brand-white)] min-h-screen">
-      {/* ── HERO HEADER ────────────────────────────────────────── */}
-      <section className="relative border-b border-[var(--brand-border)] bg-[var(--brand-dark)] text-[var(--brand-light)] py-16 sm:py-24">
+    <div className="flex flex-col bg-[var(--bg-primary)] min-h-screen transition-colors duration-300">
+      {/* ── HERO HEADER (Cinematic Dark Obsidian) ─────────────── */}
+      <section className="relative border-b border-neutral-800 bg-[#0B0B0C] text-[#F5F5F0] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-[var(--brand-brass)] uppercase">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-[#DFB163] uppercase">
                 <FileText className="h-3.5 w-3.5" strokeWidth={1.25} />
                 Corporate Capabilities & Presentation
               </span>
-              <h1 className="mt-4 font-heading text-3xl sm:text-5xl lg:text-6xl text-[var(--brand-light)] tracking-tight">
+              <h1 className="mt-4 font-heading text-3xl sm:text-5xl lg:text-6xl text-[#F5F5F0] tracking-tight">
                 Company Profile & Architectural Showcase
               </h1>
-              <p className="mt-4 text-sm sm:text-base text-[var(--brand-muted)] font-sans leading-relaxed max-w-2xl">
+              <p className="mt-4 text-sm sm:text-base text-neutral-400 font-sans leading-relaxed max-w-2xl">
                 An interactive presentation deck highlighting 25 years of turnkey interior contracting, proprietary engineering processes, and verified enterprise case studies.
               </p>
             </div>
@@ -282,7 +285,7 @@ export default function PortfolioPage() {
               <a
                 href="/GK-Space-Solutions-Company-Deck.pdf"
                 download="GK-Space-Solutions-Company-Deck.pdf"
-                className="group inline-flex items-center gap-3 bg-[var(--brand-brass)] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-dark)] transition-all duration-300 hover:bg-[var(--brand-light)] hover:shadow-xl"
+                className="group inline-flex items-center gap-3 bg-[#DFB163] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#0B0B0C] transition-all duration-300 hover:bg-white hover:shadow-xl"
               >
                 <Download className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5" strokeWidth={1.25} />
                 Download Pitch Deck (PDF)
@@ -290,7 +293,7 @@ export default function PortfolioPage() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 border border-[var(--brand-border)]/60 px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--brand-light)] hover:border-[var(--brand-brass)] transition-colors"
+                className="inline-flex items-center gap-2 border border-neutral-700 px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.15em] text-[#F5F5F0] hover:border-[#DFB163] transition-colors"
               >
                 Request Custom Presentation
               </Link>
@@ -300,15 +303,15 @@ export default function PortfolioPage() {
       </section>
 
       {/* ── INTERACTIVE SLIDE DECK SECTION ─────────────────────── */}
-      <section className="relative py-12 sm:py-20 bg-[var(--brand-light)]">
+      <section className="relative py-12 sm:py-20 bg-[var(--bg-surface)] transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Deck Frame Container */}
-          <div className="relative rounded-sm bg-[var(--brand-dark)] text-[var(--brand-light)] border border-[var(--brand-border)] shadow-2xl overflow-hidden">
+          <div className="relative rounded-sm bg-[#0B0B0C] text-[#F5F5F0] border border-neutral-800 shadow-2xl overflow-hidden">
             {/* Presentation Top Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--brand-border)]/30 px-6 py-4 bg-[var(--brand-dark)]/90 backdrop-blur-md">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-neutral-800 px-6 py-4 bg-[#0B0B0C]/90 backdrop-blur-md">
               <div className="flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-[var(--brand-brass)]" />
-                <span className="text-[11px] font-mono tracking-widest text-[var(--brand-brass)] uppercase">
+                <span className="h-2 w-2 rounded-full bg-[#DFB163]" />
+                <span className="text-[11px] font-mono tracking-widest text-[#DFB163] uppercase">
                   {slide.badge}
                 </span>
               </div>
@@ -321,8 +324,8 @@ export default function PortfolioPage() {
                     onClick={() => goToSlide(idx)}
                     className={`px-2.5 py-1 text-[11px] font-mono transition-all duration-200 border ${
                       currentSlide === idx
-                        ? "border-[var(--brand-brass)] bg-[var(--brand-brass)] text-[var(--brand-dark)] font-semibold"
-                        : "border-[var(--brand-border)]/30 text-[var(--brand-muted)] hover:text-[var(--brand-light)] hover:border-[var(--brand-border)]"
+                        ? "border-[#DFB163] bg-[#DFB163] text-[#0B0B0C] font-semibold"
+                        : "border-neutral-800 text-neutral-400 hover:text-[#F5F5F0] hover:border-neutral-600"
                     }`}
                   >
                     0{idx + 1}
@@ -336,18 +339,18 @@ export default function PortfolioPage() {
                   onClick={() => paginate(-1)}
                   disabled={currentSlide === 0}
                   aria-label="Previous Slide"
-                  className="p-2 border border-[var(--brand-border)]/40 text-[var(--brand-light)] hover:border-[var(--brand-brass)] hover:text-[var(--brand-brass)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="p-2 border border-neutral-800 text-[#F5F5F0] hover:border-[#DFB163] hover:text-[#DFB163] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="h-4 w-4" strokeWidth={1.25} />
                 </button>
-                <span className="text-xs font-mono text-[var(--brand-muted)] px-1">
+                <span className="text-xs font-mono text-neutral-400 px-1">
                   0{currentSlide + 1} / 0{slides.length}
                 </span>
                 <button
                   onClick={() => paginate(1)}
                   disabled={currentSlide === slides.length - 1}
                   aria-label="Next Slide"
-                  className="p-2 border border-[var(--brand-border)]/40 text-[var(--brand-light)] hover:border-[var(--brand-brass)] hover:text-[var(--brand-brass)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="p-2 border border-neutral-800 text-[#F5F5F0] hover:border-[#DFB163] hover:text-[#DFB163] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   <ChevronRight className="h-4 w-4" strokeWidth={1.25} />
                 </button>
@@ -355,9 +358,9 @@ export default function PortfolioPage() {
             </div>
 
             {/* Dynamic Progress Indicator Bar */}
-            <div className="w-full h-[2px] bg-[var(--brand-dark)]">
+            <div className="w-full h-[2px] bg-neutral-800">
               <motion.div
-                className="h-full bg-[var(--brand-brass)]"
+                className="h-full bg-[#DFB163]"
                 initial={{ width: 0 }}
                 animate={{ width: `${progressPercent}%` }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
@@ -378,10 +381,10 @@ export default function PortfolioPage() {
                 >
                   {/* Slide Title Header */}
                   <div className="max-w-3xl mb-8">
-                    <h2 className="font-heading text-2xl sm:text-4xl text-[var(--brand-light)] tracking-tight">
+                    <h2 className="font-heading text-2xl sm:text-4xl text-[#F5F5F0] tracking-tight">
                       {slide.title}
                     </h2>
-                    <p className="mt-2 text-sm sm:text-base text-[var(--brand-brass)] font-sans">
+                    <p className="mt-2 text-sm sm:text-base text-[#DFB163] font-sans">
                       {slide.subtitle}
                     </p>
                   </div>
@@ -395,25 +398,25 @@ export default function PortfolioPage() {
                         {slide.content.pillars?.map((p) => (
                           <div
                             key={p.title}
-                            className="p-5 border border-[var(--brand-border)]/30 bg-[var(--brand-light)]/5"
+                            className="p-5 border border-neutral-800 bg-[#141415]"
                           >
-                            <span className="text-xs font-mono text-[var(--brand-brass)] uppercase tracking-wider font-semibold">
+                            <span className="text-xs font-mono text-[#DFB163] uppercase tracking-wider font-semibold">
                               {p.title}
                             </span>
-                            <p className="mt-2 text-xs text-[var(--brand-muted)] leading-relaxed">
+                            <p className="mt-2 text-xs text-neutral-400 leading-relaxed">
                               {p.desc}
                             </p>
                           </div>
                         ))}
                       </div>
-                      <div className="lg:col-span-6 relative aspect-[16/10] overflow-hidden border border-[var(--brand-border)]/30">
+                      <div className="lg:col-span-6 relative aspect-[16/10] overflow-hidden border border-neutral-800">
                         <Image
                           src={slide.content.image}
                           alt="Philosophy Showcase"
                           fill
                           className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/70 via-transparent to-transparent" />
                       </div>
                     </div>
                   )}
@@ -425,26 +428,26 @@ export default function PortfolioPage() {
                         {slide.content.steps?.map((step) => (
                           <div
                             key={step.num}
-                            className="p-5 border border-[var(--brand-border)]/30 bg-[var(--brand-light)]/5 flex flex-col justify-between"
+                            className="p-5 border border-neutral-800 bg-[#141415] flex flex-col justify-between"
                           >
                             <div>
-                              <span className="font-heading text-2xl text-[var(--brand-brass)]">
+                              <span className="font-heading text-2xl text-[#DFB163]">
                                 {step.num}
                               </span>
-                              <h3 className="mt-3 text-sm font-semibold uppercase tracking-wider text-[var(--brand-light)] font-mono">
+                              <h3 className="mt-3 text-sm font-semibold uppercase tracking-wider text-[#F5F5F0] font-mono">
                                 {step.name}
                               </h3>
-                              <p className="mt-2 text-xs text-[var(--brand-muted)] leading-relaxed">
+                              <p className="mt-2 text-xs text-neutral-400 leading-relaxed">
                                 {step.desc}
                               </p>
                             </div>
-                            <div className="mt-4 pt-3 border-t border-[var(--brand-border)]/20 text-[10px] text-[var(--brand-brass)] font-mono">
+                            <div className="mt-4 pt-3 border-t border-neutral-800 text-[10px] text-[#DFB163] font-mono">
                               Verified Gate
                             </div>
                           </div>
                         ))}
                       </div>
-                      <p className="text-xs text-[var(--brand-muted)] text-center font-mono pt-2">
+                      <p className="text-xs text-neutral-400 text-center font-mono pt-2">
                         Turnkey Governance: Each stage requires formal engineering sign-off prior to milestone procurement.
                       </p>
                     </div>
@@ -457,21 +460,21 @@ export default function PortfolioPage() {
                         {slide.content.pillars?.map((pillar, i) => (
                           <div
                             key={pillar.title}
-                            className="p-5 border border-[var(--brand-border)]/30 bg-[var(--brand-light)]/5"
+                            className="p-5 border border-neutral-800 bg-[#141415]"
                           >
-                            <span className="text-[11px] font-mono text-[var(--brand-brass)] font-semibold">
+                            <span className="text-[11px] font-mono text-[#DFB163] font-semibold">
                               0{i + 1}. Capability
                             </span>
-                            <h3 className="mt-1 text-sm font-semibold text-[var(--brand-light)]">
+                            <h3 className="mt-1 text-sm font-semibold text-[#F5F5F0]">
                               {pillar.title}
                             </h3>
-                            <p className="mt-2 text-xs text-[var(--brand-muted)] leading-relaxed">
+                            <p className="mt-2 text-xs text-neutral-400 leading-relaxed">
                               {pillar.desc}
                             </p>
                           </div>
                         ))}
                       </div>
-                      <div className="lg:col-span-5 relative aspect-[4/3] overflow-hidden border border-[var(--brand-border)]/30">
+                      <div className="lg:col-span-5 relative aspect-[4/3] overflow-hidden border border-neutral-800">
                         <Image
                           src={slide.content.image}
                           alt="Scope Showcase"
@@ -485,7 +488,7 @@ export default function PortfolioPage() {
                   {/* 4. Case Studies Layout */}
                   {slide.content.type === "casestudy" && (
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                      <div className="lg:col-span-6 relative aspect-[16/10] overflow-hidden border border-[var(--brand-border)]/30">
+                      <div className="lg:col-span-6 relative aspect-[16/10] overflow-hidden border border-neutral-800">
                         <Image
                           src={slide.content.image}
                           alt={slide.title}
@@ -500,12 +503,12 @@ export default function PortfolioPage() {
                           {slide.content.stats?.map((stat) => (
                             <div
                               key={stat.label}
-                              className="p-4 border border-[var(--brand-border)]/30 bg-[var(--brand-light)]/5"
+                              className="p-4 border border-neutral-800 bg-[#141415]"
                             >
-                              <p className="text-[10px] uppercase font-mono tracking-widest text-[var(--brand-muted)]">
+                              <p className="text-[10px] uppercase font-mono tracking-widest text-neutral-400">
                                 {stat.label}
                               </p>
-                              <p className="mt-1 font-heading text-xl text-[var(--brand-brass)]">
+                              <p className="mt-1 font-heading text-xl text-[#DFB163]">
                                 {stat.value}
                               </p>
                             </div>
@@ -514,17 +517,17 @@ export default function PortfolioPage() {
 
                         {/* Highlights */}
                         <div className="mt-6">
-                          <p className="text-xs uppercase tracking-wider text-[var(--brand-light)] font-mono mb-3">
+                          <p className="text-xs uppercase tracking-wider text-[#F5F5F0] font-mono mb-3">
                             Engineering Highlights:
                           </p>
                           <ul className="space-y-2.5">
                             {slide.content.highlights?.map((h) => (
                               <li
                                 key={h}
-                                className="flex items-start gap-2.5 text-xs text-[var(--brand-muted)] leading-relaxed"
+                                className="flex items-start gap-2.5 text-xs text-neutral-400 leading-relaxed"
                               >
                                 <CheckCircle2
-                                  className="h-3.5 w-3.5 text-[var(--brand-brass)] flex-shrink-0 mt-0.5"
+                                  className="h-3.5 w-3.5 text-[#DFB163] flex-shrink-0 mt-0.5"
                                   strokeWidth={1.25}
                                 />
                                 <span>{h}</span>
@@ -540,24 +543,24 @@ export default function PortfolioPage() {
             </div>
 
             {/* Deck Footer / Keyboard Instruction */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[var(--brand-border)]/30 px-6 py-4 bg-[var(--brand-dark)]/95 text-xs text-[var(--brand-muted)] font-mono">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-800 px-6 py-4 bg-[#0B0B0C]/95 text-xs text-neutral-400 font-mono">
               <div className="flex items-center gap-4">
                 <span>Use keyboard left / right arrow keys to navigate</span>
-                <span className="hidden sm:inline text-[var(--brand-border)]">|</span>
+                <span className="hidden sm:inline text-neutral-700">|</span>
                 <span>GK Space Solutions LLP &copy; {new Date().getFullYear()}</span>
               </div>
               <div className="flex items-center gap-4">
                 <a
                   href="/GK-Space-Solutions-Company-Deck.pdf"
                   download
-                  className="hover:text-[var(--brand-brass)] transition-colors flex items-center gap-1.5"
+                  className="hover:text-[#DFB163] transition-colors flex items-center gap-1.5"
                 >
                   <Download className="h-3.5 w-3.5" strokeWidth={1.25} />
                   Download Deck (PDF)
                 </a>
                 <Link
                   href="/contact"
-                  className="text-[var(--brand-brass)] hover:underline"
+                  className="text-[#DFB163] hover:underline"
                 >
                   Contact Engineering Team
                 </Link>
@@ -568,26 +571,26 @@ export default function PortfolioPage() {
       </section>
 
       {/* ── CONSULTATION STRIP ─────────────────────────────────── */}
-      <section className="py-16 bg-[var(--brand-white)] border-t border-[var(--brand-border)]">
+      <section className="py-16 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-          <h3 className="font-heading text-2xl sm:text-3xl text-[var(--brand-dark)] tracking-tight">
+          <h3 className="font-heading text-2xl sm:text-3xl text-[var(--text-primary)] tracking-tight">
             Schedule a Tailored Presentation for Your Board or Architectural Practice
           </h3>
-          <p className="mt-3 text-sm text-[var(--brand-muted)] max-w-xl mx-auto font-sans leading-relaxed">
+          <p className="mt-3 text-sm text-[var(--text-secondary)] max-w-xl mx-auto font-sans leading-relaxed">
             Our principal contractors are available for in-person or virtual boardroom presentations covering BOQs, value engineering, and joinery prototypes.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-[var(--brand-dark)] text-[var(--brand-light)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] hover:bg-[var(--brand-brass)] hover:text-[var(--brand-dark)] transition-colors"
+              className="bg-[#DFB163] text-[#0B0B0C] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] hover:bg-white transition-colors"
             >
               Request Boardroom Briefing
             </Link>
             <a
               href="tel:+919820401179"
-              className="inline-flex items-center gap-2 border border-[var(--brand-border)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-dark)] hover:border-[var(--brand-brass)] transition-colors"
+              className="inline-flex items-center gap-2 border border-[var(--border-primary)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-primary)] hover:border-[var(--accent-gold)] transition-colors"
             >
-              <Phone className="h-3.5 w-3.5 text-[var(--brand-brass)]" strokeWidth={1.25} />
+              <Phone className="h-3.5 w-3.5 text-[var(--accent-gold)]" strokeWidth={1.25} />
               +91 98204 01179
             </a>
           </div>

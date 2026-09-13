@@ -75,22 +75,22 @@ export const companyStats: CompanyStat[] = [
   {
     value: "25+",
     label: "Years Experience",
-    subtext: "Master interior craftsmanship & engineering",
+    subtext: "Master interior craftsmanship & engineering established 2000",
   },
   {
-    value: "350+",
-    label: "Executed Projects",
-    subtext: "Commercial headquarters & luxury residences",
+    value: "50+",
+    label: "Projects Executed",
+    subtext: "Turnkey corporate landmarks & luxury private residences",
+  },
+  {
+    value: "Mumbai & Pune",
+    label: "Presence & Millwork Facility",
+    subtext: "Regional execution & dedicated 50,000+ sq. ft. fabrication facility",
   },
   {
     value: "100%",
-    label: "Quality Delivery",
-    subtext: "Zero-compromise material & turnkey execution",
-  },
-  {
-    value: "50K+",
-    label: "Sq. Ft. In-House Facility",
-    subtext: "Bespoke architectural millwork & fabrication",
+    label: "Turnkey Delivery",
+    subtext: "Single-source contracting from bare-shell to defect-free handover",
   },
 ];
 

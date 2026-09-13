@@ -3,6 +3,7 @@ import { Montserrat, Playfair_Display } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -46,12 +47,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${playfair.variable}`}>
-      <body className="flex min-h-screen flex-col antialiased">
-        <Navbar />
-        <main className="flex-1 pt-[85px] sm:pt-[100px]">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${montserrat.variable} ${playfair.variable}`}
+    >
+      <body className="flex min-h-screen flex-col antialiased bg-[var(--bg-primary)] text-[var(--text-primary)]">
+        <ThemeProvider>
+          <Navbar />
+          <main className="flex-1 pt-[85px] sm:pt-[100px]">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </ThemeProvider>
       </body>
     </html>
   );

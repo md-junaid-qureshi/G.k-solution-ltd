@@ -8,6 +8,7 @@ export interface GalleryProject {
   caption: string;
   location: string;
   scope: string;
+  contractor: string;
 }
 
 export const galleryCategories: { id: ProjectCategory; label: string }[] = [
@@ -27,6 +28,7 @@ export const projectsData: GalleryProject[] = [
       "Step into a space where comfort meets contemporary design—crafted to welcome, relax, and impress from the very first moment.",
     location: "Mumbai, India",
     scope: "Turnkey Lounge Contracting & Acoustic Finishes",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "coffee-reception-hospitality",
@@ -37,6 +39,7 @@ export const projectsData: GalleryProject[] = [
       "Where would you pause first? A space designed to bring people together through thoughtful layout, modern finishes, and inviting atmosphere.",
     location: "Lower Parel, Mumbai",
     scope: "Custom Joinery & Hospitality Fit-Out",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "work-seating-area",
@@ -47,6 +50,7 @@ export const projectsData: GalleryProject[] = [
       "Imagine working in a space like this—designed to encourage focus, collaboration, and effortless comfort throughout the day.",
     location: "BKC, Mumbai",
     scope: "Ergonomic Systems & Wire Management",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "office-lounge-waiting-area",
@@ -57,6 +61,7 @@ export const projectsData: GalleryProject[] = [
       "Modern office lounge designed with a clean layout and comfortable seating for a welcoming client experience.",
     location: "Nariman Point, Mumbai",
     scope: "Bespoke Millwork & Ambient Illumination",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "office-reception-waiting-lounge",
@@ -67,6 +72,7 @@ export const projectsData: GalleryProject[] = [
       "A spacious office reception and waiting area designed for functionality, comfort, and professional client interaction.",
     location: "Andheri East, Mumbai",
     scope: "Acoustic Wall Panels & Italian Marble",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "residential-bedroom-interior",
@@ -77,6 +83,7 @@ export const projectsData: GalleryProject[] = [
       "A warm and contemporary bedroom interior designed with wooden finishes and smart storage for comfort and practicality.",
     location: "Worli, Mumbai",
     scope: "Veneer Paneling & Concealed Storage",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "modern-wooden-bedroom-design",
@@ -87,6 +94,7 @@ export const projectsData: GalleryProject[] = [
       "A warm and thoughtfully designed bedroom where natural wooden textures and soft detailing create a calm, inviting atmosphere for everyday living.",
     location: "Juhu, Mumbai",
     scope: "Artisan Joinery & Hardwood Finishes",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "contemporary-functional-bedroom",
@@ -97,6 +105,7 @@ export const projectsData: GalleryProject[] = [
       "How would your ideal space feel? Designed with precision and simplicity, this bedroom blends functionality with timeless wooden elegance.",
     location: "Bandra West, Mumbai",
     scope: "Master Suite Contracting & Cove Lighting",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "artistic-modern-bedroom-concept",
@@ -107,6 +116,7 @@ export const projectsData: GalleryProject[] = [
       "A bold take on modern bedroom design—where creativity, unique form, and artistic detailing transform a simple space into a visual experience.",
     location: "Pali Hill, Mumbai",
     scope: "Architectural Detailing & Fluted Paneling",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "modern-office-reception-lounge",
@@ -117,6 +127,7 @@ export const projectsData: GalleryProject[] = [
       "What makes a first impression unforgettable? A vibrant welcome space designed to spark energy, creativity, and conversation the moment you walk in.",
     location: "BKC, Mumbai",
     scope: "Executive Salon & Partition Systems",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "contemporary-collaboration-lounge",
@@ -127,6 +138,7 @@ export const projectsData: GalleryProject[] = [
       "Where ideas take shape—an open, comfortable lounge designed to encourage collaboration, relaxation, and effortless team interaction.",
     location: "Pune, India",
     scope: "Acoustic Boardroom & Integrated AV",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "creative-cafeteria-breakout",
@@ -137,6 +149,7 @@ export const projectsData: GalleryProject[] = [
       "Step away, connect, and recharge—this thoughtfully designed cafeteria space brings people together in a relaxed and inspiring environment.",
     location: "Mumbai, India",
     scope: "Commercial Dining Contracting & Ceiling Baffles",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "modern-reception-desk-workspace",
@@ -147,6 +160,7 @@ export const projectsData: GalleryProject[] = [
       "What if a workspace could reflect creativity from the very first glance? A bold, modern reception design that combines functionality with a fresh, innovative aesthetic.",
     location: "Lower Parel, Mumbai",
     scope: "Solid Surface Fabrication & LED Inlays",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "contemporary-wooden-reception-counter",
@@ -157,6 +171,7 @@ export const projectsData: GalleryProject[] = [
       "A seamless blend of natural textures and modern craftsmanship—designed to create a professional yet welcoming first impression for every visitor.",
     location: "Fort, Mumbai",
     scope: "Bespoke Millwork & Brass Inlays",
+    contractor: "GK Space Solutions LLP",
   },
   {
     id: "executive-corporate-headquarters",
@@ -167,5 +182,6 @@ export const projectsData: GalleryProject[] = [
       "Engineering spaces of consequence where precision turnkey execution meets institutional corporate authority.",
     location: "BKC, Mumbai",
     scope: "Full Lifecycle Civil & Interior Contracting",
+    contractor: "GK Space Solutions LLP",
   },
 ];
