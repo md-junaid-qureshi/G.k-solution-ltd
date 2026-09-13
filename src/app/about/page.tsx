@@ -28,6 +28,7 @@ interface TeamMember {
   experience: string;
   focus: string;
   image: string;
+  initials: string;
 }
 
 const leadershipTeam: TeamMember[] = [
@@ -37,7 +38,9 @@ const leadershipTeam: TeamMember[] = [
     experience: "25+ Years Experience",
     focus:
       "Turnkey interior contracting, civil engineering governance, and strategic enterprise client relations across commercial and residential landmarks.",
-    image: "/projects/team1.jpeg",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+    initials: "GS",
   },
   {
     name: "Aditya Kumar Sharma",
@@ -45,7 +48,9 @@ const leadershipTeam: TeamMember[] = [
     experience: "12+ Years Experience",
     focus:
       "Design development, spatial ergonomics, CAD shop drawing detailing, and precision material curation for luxury penthouses and corporate suites.",
-    image: "/projects/person1.jpg",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+    initials: "AS",
   },
   {
     name: "Pintu Kumar",
@@ -53,7 +58,9 @@ const leadershipTeam: TeamMember[] = [
     experience: "15+ Years Experience",
     focus:
       "Full lifecycle site execution, MEP infrastructure, false ceiling grids, quality checklists, and zero-defect handover supervision.",
-    image: "/projects/person2.jpg",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80",
+    initials: "PK",
   },
 ];
 
@@ -286,12 +293,17 @@ export default function AboutPage() {
                     src={leader.image}
                     alt={leader.name}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover grayscale hover:grayscale-0 transition duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C]/70 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute top-3 right-3 bg-[#0B0B0C]/90 backdrop-blur-sm text-[#DFB163] text-[10px] font-mono uppercase px-2 py-0.5 border border-neutral-700">
                     {leader.experience}
+                  </div>
+                  <div className="absolute bottom-3 left-3 flex items-center gap-2 pointer-events-none">
+                    <span className="h-7 w-7 rounded-full bg-[#0B0B0C]/90 backdrop-blur-sm border border-[#DFB163]/50 text-[#DFB163] text-[10px] font-mono font-semibold flex items-center justify-center">
+                      {leader.initials}
+                    </span>
                   </div>
                 </div>
 
