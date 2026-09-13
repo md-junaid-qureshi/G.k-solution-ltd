@@ -121,10 +121,10 @@ export default function ProjectsGallery() {
                     {project.title}
                   </h3>
 
-                  {/* Client's Exact Architectural Caption */}
-                  <blockquote className="mt-3 text-xs sm:text-[13px] text-[var(--text-secondary)] leading-relaxed font-sans border-l-2 border-[var(--accent-gold)]/50 pl-3 italic">
-                    &ldquo;{project.caption}&rdquo;
-                  </blockquote>
+                  {/* Architectural Editorial Copy */}
+                  <p className="mt-3 text-sm text-neutral-600 dark:text-neutral-400 not-italic font-normal leading-relaxed tracking-normal">
+                    {project.caption}
+                  </p>
                 </div>
 
                 {/* Scope & Inquire Footer */}
@@ -197,8 +197,8 @@ export default function ProjectsGallery() {
                     <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.25} />
                   </Link>
                 </div>
-                <p className="mt-4 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed italic border-l border-[var(--accent-gold)] pl-3">
-                  &ldquo;{selectedProject.caption}&rdquo;
+                <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400 not-italic font-normal leading-relaxed tracking-normal">
+                  {selectedProject.caption}
                 </p>
                 <div className="mt-4 pt-3 border-t border-[var(--border-primary)] flex flex-wrap items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
                   <span>Turnkey Contracting: <strong className="text-[var(--text-primary)]">{selectedProject.contractor}</strong></span>
