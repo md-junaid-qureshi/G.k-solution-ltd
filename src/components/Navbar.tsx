@@ -65,9 +65,8 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* ── Compact 1-Line Topbar on Mobile / Full on Desktop ─ */}
       <div
-        className={`border-b border-brand-border bg-brand-white/95 backdrop-blur-sm transition-all duration-500 ${
-          scrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100"
-        }`}
+        className={`border-b border-brand-border bg-brand-white/95 backdrop-blur-sm transition-all duration-500 ${scrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100"
+          }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-1.5 sm:py-2">
           <div className="flex items-center gap-4 sm:gap-6">
@@ -96,22 +95,24 @@ export default function Navbar() {
 
       {/* ── Main Nav ────────────────────────────────────── */}
       <nav
-        className={`border-b border-brand-border bg-brand-white/95 backdrop-blur-sm transition-shadow duration-300 ${
-          scrolled ? "shadow-sm" : ""
-        }`}
+        className={`border-b border-brand-border bg-brand-white/95 backdrop-blur-sm transition-shadow duration-300 ${scrolled ? "shadow-sm" : ""
+          }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3">
           {/* Logo & Brand Lockup */}
-          <Link href="/" className="group flex items-center gap-2.5 sm:gap-3 min-w-0 pr-2">
-            <Image
-              src="/logo.png"
-              alt="GK Space Solutions LLP"
-              width={60}
-              height={60}
-              className="h-11 sm:h-14 w-auto object-contain flex-shrink-0"
-              priority
-            />
-            <span className="font-serif tracking-wider sm:tracking-widest text-sm sm:text-lg md:text-xl font-bold uppercase text-neutral-900 truncate">
+          <Link href="/" className="group flex items-center gap-3">
+            <div className="overflow-hidden rounded-md border border-neutral-800 bg-[#121212] p-1 shadow-sm flex-shrink-0">
+              <Image
+                src="/logo.jpeg"
+                alt="GK Space Solutions LLP"
+                width={48}
+                height={48}
+                className="h-10 sm:h-11 w-auto object-contain"
+                priority
+                unoptimized
+              />
+            </div>
+            <span className="font-serif tracking-widest text-base sm:text-lg font-bold uppercase text-neutral-900">
               <span className="text-[#DFB163]">G</span>K SPACE SOLUTIONS LLP
             </span>
           </Link>
@@ -122,11 +123,10 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative text-xs lg:text-[13px] font-medium uppercase tracking-[0.12em] lg:tracking-[0.15em] transition-colors duration-300 whitespace-nowrap ${
-                  pathname === item.href
+                className={`relative text-xs lg:text-[13px] font-medium uppercase tracking-[0.12em] lg:tracking-[0.15em] transition-colors duration-300 whitespace-nowrap ${pathname === item.href
                     ? "text-brand-brass"
                     : "text-brand-dark hover:text-brand-brass"
-                }`}
+                  }`}
               >
                 {item.label}
                 {pathname === item.href && (
@@ -153,9 +153,8 @@ export default function Navbar() {
 
       {/* ── Mobile Drawer (For screens < 768px) ──────────── */}
       <div
-        className={`fixed inset-0 top-0 z-40 transition-all duration-500 md:hidden ${
-          isOpen ? "visible opacity-100" : "invisible opacity-0"
-        }`}
+        className={`fixed inset-0 top-0 z-40 transition-all duration-500 md:hidden ${isOpen ? "visible opacity-100" : "invisible opacity-0"
+          }`}
       >
         <div
           className="absolute inset-0 bg-brand-dark/40 backdrop-blur-sm"
@@ -163,20 +162,23 @@ export default function Navbar() {
         />
 
         <div
-          className={`absolute right-0 top-0 h-full w-[300px] max-w-[85vw] bg-brand-white shadow-2xl transition-transform duration-500 ease-out flex flex-col justify-between ${
-            isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute right-0 top-0 h-full w-[300px] max-w-[85vw] bg-brand-white shadow-2xl transition-transform duration-500 ease-out flex flex-col justify-between ${isOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div>
             <div className="flex items-center justify-between border-b border-brand-border px-5 py-4">
               <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                <Image
-                  src="/logo.png"
-                  alt="GK Space Solutions LLP"
-                  width={40}
-                  height={40}
-                  className="h-9 w-auto object-contain flex-shrink-0"
-                />
+                <div className="overflow-hidden rounded-md border border-neutral-800 bg-[#121212] p-1 shadow-sm flex-shrink-0">
+                  <Image
+                    src="/logo.jpeg"
+                    alt="GK Space Solutions LLP"
+                    width={36}
+                    height={36}
+                    className="h-8 w-auto object-contain"
+                    priority
+                    unoptimized
+                  />
+                </div>
                 <span className="font-serif tracking-wider text-xs sm:text-sm font-bold uppercase text-neutral-900 truncate">
                   <span className="text-[#DFB163]">G</span>K SPACE SOLUTIONS LLP
                 </span>
@@ -196,11 +198,10 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`flex items-center justify-between border-b border-brand-border/60 py-3 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
-                    pathname === item.href
+                  className={`flex items-center justify-between border-b border-brand-border/60 py-3 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${pathname === item.href
                       ? "text-brand-brass font-semibold"
                       : "text-brand-dark hover:text-brand-brass"
-                  }`}
+                    }`}
                 >
                   {item.label}
                   <ChevronRight
