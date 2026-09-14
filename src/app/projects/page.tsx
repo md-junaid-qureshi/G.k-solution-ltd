@@ -7,7 +7,7 @@ import { company } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Projects Gallery",
   description:
-    "Explore our portfolio of corporate headquarters, luxury residential suites, and commercial hospitality interiors crafted by GK Space Solutions LLP in Mumbai and Pune.",
+    "Explore our portfolio of corporate headquarters, luxury residential suites, and commercial hospitality interiors crafted by GK Space Solutions LLP across India.",
 };
 
 export default function ProjectsPage() {
@@ -25,7 +25,7 @@ export default function ProjectsPage() {
               Architectural & Interior Works
             </h1>
             <p className="mt-4 text-sm sm:text-base text-neutral-400 font-sans leading-relaxed">
-              A master curation of 15 completed projects across Commercial, Corporate, and Luxury Residential sectors. Engineered with millimeter tolerances, in-house millwork, and 25 years of construction integrity.
+              A curated curation of completed projects across Commercial, Corporate, and Luxury Residential sectors. Engineered with millimeter tolerances, in-house millwork, and turnkey execution integrity across India.
             </p>
           </div>
         </div>

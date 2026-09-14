@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -22,30 +23,48 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: "slide-1",
-    image: "/projects/carousel-1.jpg",
+    image: "/images/hero/hero-cafe-lounge.jpeg",
     tagline: "BESPOKE ARCHITECTURAL INTERIORS",
     heading: "Crafting Spaces with Precision.",
     subheading:
-      "Delivering world-class corporate and residential environments across Mumbai & Pune.",
-    est: "EST. 2000 — MUMBAI & PUNE",
+      "Delivering world-class corporate and residential environments across India.",
+    est: "TURNKEY INTERIORS — PAN-INDIA",
   },
   {
     id: "slide-2",
-    image: "/projects/carousel-2.jpg",
+    image: "/images/hero/hero-boardroom.jpeg",
     tagline: "TURNKEY EXECUTION & FIT-OUTS",
     heading: "Where Innovation Meets Craftsmanship.",
     subheading:
-      "25+ years of delivering uncompromising quality from concept to reality.",
-    est: "25+ YEARS OF EXCELLENCE",
+      "Delivering uncompromising quality from concept to reality.",
+    est: "INTERIOR FIT-OUT SPECIALISTS",
   },
   {
     id: "slide-3",
-    image: "/projects/office.jpeg",
+    image: "/images/hero/hero-reception.jpeg",
     tagline: "CONTEMPORARY COMMERCIAL WORKSPACES",
     heading: "Designing Spaces. Enriching Lives.",
     subheading:
       "Functional elegance tailored to modern enterprise demands.",
     est: "COMMERCIAL INTERIOR SPECIALISTS",
+  },
+  {
+    id: "slide-4",
+    image: "/images/hero/hero-lattice.jpeg",
+    tagline: "BESPOKE JOINERY & MILLWORK",
+    heading: "Precision-Crafted Woodwork.",
+    subheading:
+      "Signature lattice panels, custom cabinetry, and artisan detailing for landmark spaces.",
+    est: "IN-HOUSE JOINERY FACILITY",
+  },
+  {
+    id: "slide-5",
+    image: "/images/hero/hero-executive-lounge.jpeg",
+    tagline: "EXECUTIVE LOUNGE INTERIORS",
+    heading: "Elevated Corporate Environments.",
+    subheading:
+      "Refined reception lounges, boardrooms, and collaborative workspaces built to impress.",
+    est: "PAN-INDIA EXECUTION",
   },
 ];
 
@@ -142,15 +161,15 @@ export default function HeroSlider() {
               src={slide.image}
               alt={slide.heading}
               fill
-              priority
+              priority={current === 0}
+              quality={95}
               sizes="100vw"
-              className="object-contain sm:object-cover w-full h-full object-center"
+              className="object-cover object-center w-full h-full"
             />
           </motion.div>
 
-          {/* Warm Soft Dark Architectural Vignette Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/60" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/25 to-black/75" />
+          {/* Subtle dark architectural gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
         </motion.div>
       </AnimatePresence>
 
@@ -214,22 +233,20 @@ export default function HeroSlider() {
                 href="#projects"
                 className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-[#C5A059] px-6 sm:px-8 py-3 sm:py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#1C1917] transition-all duration-300 hover:bg-white hover:shadow-xl active:scale-[0.98]"
               >
-                Explore Projects
+                EXPLORE PROJECTS
                 <ArrowRight
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 text-[#1C1917]"
                   strokeWidth={1.25}
                 />
               </a>
 
-              <a
-                href="https://wa.me/919820401179?text=Hello%20GK%20Space%20Solutions%2C%20I%20would%20like%20to%20schedule%20an%20architectural%20consultation."
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact"
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 border border-white/25 bg-black/40 px-6 sm:px-8 py-3 sm:py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm transition-all duration-300 hover:border-[#C5A059] hover:bg-white/10 active:scale-[0.98]"
               >
                 <MessageSquare className="h-4 w-4 text-[#C5A059]" strokeWidth={1.25} />
-                Schedule Consultation
-              </a>
+                SCHEDULE CONSULTATION
+              </Link>
             </div>
           </motion.div>
         </AnimatePresence>

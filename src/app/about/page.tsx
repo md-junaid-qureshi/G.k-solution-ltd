@@ -17,9 +17,9 @@ import {
 import { company, companyStats } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "About Us | Over 25+ Years of Architectural Excellence",
+  title: "About Us | Bespoke Architectural Execution & Turnkey Interiors",
   description:
-    "Learn about GK Space Solutions LLP, a premier interior contracting and turnkey execution firm headquartered in Mumbai with over 25 years of master craftsmanship across Maharashtra.",
+    "Learn about GK Space Solutions LLP, a premier interior contracting and turnkey execution firm delivering master craftsmanship and precision fit-outs across India.",
 };
 
 interface TeamMember {
@@ -35,9 +35,9 @@ const leadershipTeam: TeamMember[] = [
   {
     name: "Ganesh Kumar Sharma",
     role: "Founder & Managing Director",
-    experience: "25+ Years Experience",
+    experience: "Turnkey Execution Specialist",
     focus:
-      "Turnkey interior contracting, civil engineering governance, and strategic enterprise client relations across commercial and residential landmarks.",
+      "Turnkey interior contracting, architectural engineering governance, and strategic enterprise client relations across commercial and residential landmarks.",
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
     initials: "GS",
@@ -75,7 +75,7 @@ const corePhilosophy = [
   },
   {
     title: "Craftsmanship",
-    desc: "Millimeter-tolerance joinery fabricated in our modern in-house millwork facility with German machinery and 25 years of artisan expertise.",
+    desc: "Millimeter-tolerance joinery fabricated in our modern in-house millwork facility with German machinery and artisan precision.",
   },
   {
     title: "Experience",
@@ -102,7 +102,7 @@ const fiveStepProcess = [
   {
     step: "04",
     name: "Execute",
-    desc: "Civil site works, in-house millwork fabrication, acoustic partitions, and precision electrical runs.",
+    desc: "Interior fit-out execution, in-house millwork fabrication, acoustic partitions, and precision electrical runs.",
   },
   {
     step: "05",
@@ -120,13 +120,13 @@ export default function AboutPage() {
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-[#DFB163] uppercase">
               <Clock className="h-3.5 w-3.5" strokeWidth={1.25} />
-              Heritage & Industry Standing — Est. 2000
+              Heritage & Industry Standing — Pan-India Excellence
             </span>
             <h1 className="mt-4 font-heading text-3xl sm:text-5xl lg:text-6xl text-[#F5F5F0] tracking-tight">
-              Over 25+ Years of Architectural & Interior Excellence
+              Bespoke Architectural Execution &amp; Turnkey Interiors
             </h1>
             <p className="mt-4 text-sm sm:text-base text-neutral-400 font-sans leading-relaxed">
-              GK Space Solutions LLP is an established interior contracting and turnkey execution firm headquartered in Mumbai, delivering premier corporate workspaces, hospitality lounges, and luxury residential environments across Mumbai, Pune, and Maharashtra.
+              GK Space Solutions LLP is an established interior contracting and turnkey execution firm delivering premier corporate workspaces, hospitality lounges, and luxury residential environments across India.
             </p>
           </div>
         </div>
@@ -144,10 +144,10 @@ export default function AboutPage() {
                 Bridging architectural ambition with buildable reality.
               </h2>
               <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
-                Founded by master contractor Ganesh Kumar Sharma, GK Space Solutions LLP has grown from an artisanal joinery workshop into a full-scale interior contracting powerhouse. Over the past quarter century, we have served as the trusted execution arm for leading architects, developers, and corporate enterprises.
+                Led by master contractor Ganesh Kumar Sharma, GK Space Solutions LLP has grown from an artisanal joinery workshop into a full-scale interior contracting powerhouse. We serve as the trusted execution partner for leading architects, developers, and corporate enterprises across India.
               </p>
               <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
-                Our distinct advantage lies in our 50,000+ sq. ft. dedicated manufacturing facility in Mumbai. By producing our own bespoke millwork, modular kitchens, and custom acoustic paneling in-house, we eliminate contractor delays and maintain millimeter-level tolerances on every installation.
+                Our distinct advantage lies in our dedicated 50,000+ sq. ft. manufacturing facility. By producing our own bespoke millwork, modular systems, and custom acoustic paneling in-house, we eliminate contractor delays and maintain millimeter-level tolerances on every installation across India.
               </p>
             </div>
 

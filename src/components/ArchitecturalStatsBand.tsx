@@ -1,35 +1,35 @@
-import { Clock, Building2, MapPin, ShieldCheck } from "lucide-react";
+import { Sparkles, Building2, MapPin, ShieldCheck } from "lucide-react";
 
 interface StatItem {
   value: string;
   label: string;
   description: string;
-  icon: typeof Clock;
+  icon: typeof Sparkles;
 }
 
 const stats: StatItem[] = [
   {
-    value: "25+",
-    label: "Years Experience",
-    description: "Industry leadership and master interior engineering established in 2000.",
-    icon: Clock,
+    value: "Turnkey",
+    label: "Bespoke Architectural Execution",
+    description: "Master interior fit-outs, bespoke joinery, and turnkey commercial space solutions executed across India.",
+    icon: Sparkles,
   },
   {
-    value: "50+",
+    value: "100+",
     label: "Projects Executed",
-    description: "Commercial headquarters, diplomatic salons, and luxury residences.",
+    description: "Commercial headquarters, diplomatic salons, and luxury residences across India.",
     icon: Building2,
   },
   {
-    value: "Mumbai & Pune",
-    label: "Regional Presence",
-    description: "Full turnkey civil contracting and dedicated 50,000+ sq. ft. millwork facility.",
+    value: "Pan-India",
+    label: "Pan-India Presence",
+    description: "Full turnkey interior fit-outs and dedicated joinery & millwork execution across India.",
     icon: MapPin,
   },
   {
     value: "100%",
     label: "Turnkey Delivery",
-    description: "Single-source accountability from bare-shell civil works to defect-free handover.",
+    description: "Single-source accountability from bare-shell interiors to defect-free handover.",
     icon: ShieldCheck,
   },
 ];

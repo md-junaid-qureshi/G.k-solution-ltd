@@ -68,7 +68,7 @@ export default function HomeContact() {
               Ready to Translate Your Vision Into Reality?
             </h2>
             <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
-              Connect with our principal contracting engineers for BOQ analysis, technical feasibility, or turnkey interior execution across Mumbai and Pune.
+              Connect with our principal contracting engineers for BOQ analysis, technical feasibility, or turnkey interior execution across India.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -129,7 +129,7 @@ export default function HomeContact() {
                     Direct Project Consultation
                   </h3>
                   <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)]">
-                    Mumbai &bull; Pune
+                    Pan-India Presence
                   </span>
                 </div>
 

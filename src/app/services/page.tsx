@@ -21,7 +21,7 @@ import { company } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Services | Turnkey Architectural & Interior Contracting",
   description:
-    "Explore turnkey commercial fit-outs, luxury residential interiors, space planning, bespoke millwork, and site supervision by GK Space Solutions LLP in Mumbai and Pune.",
+    "Explore turnkey commercial fit-outs, luxury residential interiors, space planning, bespoke millwork, and site supervision by GK Space Solutions LLP across India.",
 };
 
 interface ServiceOffering {
@@ -116,14 +116,14 @@ const serviceOfferings: ServiceOffering[] = [
 
 const whyGKHighlights = [
   {
-    title: "25+ Years Industry Leadership",
+    title: "Precision Turnkey Fit-Outs Across India",
     description:
-      "A proven track record spanning a quarter century, trusted by premier corporate institutions, real estate developers, and high-profile private clients across Maharashtra.",
+      "A proven track record of architectural excellence, trusted by premier corporate institutions, real estate developers, and high-profile private clients across India.",
   },
   {
     title: "In-House Joinery Facility",
     description:
-      "Our 50,000+ sq. ft. modern manufacturing facility in Mumbai ensures total control over millwork quality, eliminating third-party contractor delays.",
+      "Our 50,000+ sq. ft. modern manufacturing facility ensures total control over millwork quality, eliminating third-party contractor delays.",
   },
   {
     title: "Precision Architectural Detailing",
@@ -152,7 +152,7 @@ export default function ServicesPage() {
               Turnkey Architectural & Interior Services
             </h1>
             <p className="mt-4 text-sm sm:text-base text-neutral-400 font-sans leading-relaxed">
-              From bare-shell corporate civil fit-outs to bespoke residential millwork, GK Space Solutions LLP delivers single-source accountability with millimeter-level precision across Mumbai, Pune, and Maharashtra.
+              From bare-shell corporate fit-outs to bespoke residential millwork, GK Space Solutions LLP delivers single-source accountability with millimeter-level precision across India.
             </p>
           </div>
         </div>

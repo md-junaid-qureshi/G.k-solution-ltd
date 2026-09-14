@@ -75,7 +75,7 @@ export async function submitContactInquiry(
                         <span style="color: #DFB163;">G</span>K SPACE SOLUTIONS LLP
                       </span>
                       <p style="margin: 6px 0 0 0; font-size: 11px; font-family: monospace; letter-spacing: 0.2em; color: #DFB163; text-transform: uppercase;">
-                        Executive Inquiry Terminal &bull; Mumbai &amp; Pune
+                        Executive Inquiry Terminal &bull; Pan-India
                       </p>
                     </td>
                   </tr>
@@ -116,8 +116,8 @@ export async function submitContactInquiry(
                   </tr>
                   <tr>
                     <td style="padding: 24px 36px; background-color: #141312; border-top: 1px solid #292524; text-align: center; font-size: 11px; color: #78716C; line-height: 1.6;">
-                      GK Space Solutions LLP &bull; Mumbai &amp; Pune, Maharashtra, India<br>
-                      Turnkey Contracting &bull; Bespoke Architectural Millwork &bull; Est. 2000
+                      GK Space Solutions LLP &bull; Pan-India Operational Reach<br>
+                      Turnkey Contracting &bull; Bespoke Architectural Millwork &bull; Precision Fit-Outs
                     </td>
                   </tr>
                 </table>

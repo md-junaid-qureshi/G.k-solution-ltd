@@ -24,15 +24,15 @@ export const metadata: Metadata = {
     template: "%s | GK Space Solutions LLP",
   },
   description:
-    "A distinguished interior contracting and furniture solutions firm with over 25 years of industry expertise, delivering refined residential and commercial interiors in Mumbai, India.",
+    "A distinguished interior contracting and furniture solutions firm delivering refined residential and commercial interiors across India.",
   keywords: [
     "interior design",
     "luxury interiors",
-    "Mumbai interior designer",
+    "interior fit-out India",
     "commercial interiors",
     "residential design",
     "GK Space Solutions",
-    "furniture solutions",
+    "turnkey interiors",
   ],
   openGraph: {
     type: "website",

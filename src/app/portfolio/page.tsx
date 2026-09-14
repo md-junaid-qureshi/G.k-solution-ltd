@@ -6,7 +6,7 @@ import ProjectsGallery from "@/components/ProjectsGallery";
 export const metadata: Metadata = {
   title: "Architectural Portfolio & Joinery Works | GK Space Solutions LLP",
   description:
-    "Explore our complete curation of enterprise headquarters, diplomatic salons, and private luxury residences executed across Mumbai & Pune over 25 years.",
+    "Explore our complete curation of enterprise headquarters, diplomatic salons, and private luxury residences executed across India.",
 };
 
 export default function PortfolioPage() {
@@ -29,7 +29,7 @@ export default function PortfolioPage() {
                 Architectural Portfolio & Joinery Works
               </h1>
               <p className="mt-3 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
-                Browse our completed enterprise headquarters, diplomatic salons, and private luxury residences executed across Mumbai & Pune over 25 years.
+                Browse our completed enterprise headquarters, diplomatic salons, and private luxury residences executed across India.
               </p>
             </div>
 

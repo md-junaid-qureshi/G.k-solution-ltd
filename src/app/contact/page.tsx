@@ -5,7 +5,7 @@ import ContactClient from "./ContactClient";
 export const metadata: Metadata = {
   title: "Contact & Project Inquiries | GK Space Solutions LLP",
   description:
-    "Consult directly with the engineering and turnkey contracting leadership at GK Space Solutions LLP for corporate, hospitality, and residential interior projects in Mumbai and Pune.",
+    "Consult directly with the engineering and turnkey contracting leadership at GK Space Solutions LLP for corporate, hospitality, and residential interior projects across India.",
 };
 
 export default function ContactPage() {

@@ -101,7 +101,7 @@ export default function ContactClient() {
             Consult With Our Turnkey Engineers
           </h1>
           <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
-            Whether you require a comprehensive BOQ estimation, bespoke architectural millwork, or full-lifecycle corporate contracting in Mumbai or Pune, our leadership team is ready to assist.
+            Whether you require a comprehensive BOQ estimation, bespoke architectural millwork, or full-lifecycle corporate contracting across India, our leadership team is ready to assist.
           </p>
 
           <div className="mt-10 space-y-6">
@@ -134,12 +134,12 @@ export default function ContactClient() {
             <div className="flex items-start gap-4 p-5 bg-[var(--bg-surface)] border border-[var(--border-primary)] transition-colors hover:border-[var(--accent-gold)]">
               <MapPin className="h-5 w-5 text-[var(--accent-gold)] shrink-0 mt-0.5" strokeWidth={1.25} />
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-secondary)]">Regional Headquarters</span>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-secondary)]">Operational Reach</span>
                 <p className="mt-1 font-medium text-[var(--text-primary)]">
-                  Mumbai & Pune, Maharashtra, India
+                  Pan-India Turnkey Execution
                 </p>
                 <p className="mt-0.5 text-xs text-[var(--text-secondary)] font-sans">
-                  In-House Millwork & Fabrication Facility: Mumbai
+                  Dedicated In-House Millwork &amp; Fabrication Facility (50,000+ Sq. Ft.)
                 </p>
               </div>
             </div>

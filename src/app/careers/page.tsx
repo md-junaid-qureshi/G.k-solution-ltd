@@ -14,87 +14,20 @@ import {
   Send,
   Phone,
   Mail,
+  Layers,
+  Sparkles,
+  HardHat,
+  Hammer,
+  Compass,
+  MessageSquare,
 } from "lucide-react";
-import { company } from "@/lib/data";
-
-interface JobRole {
-  id: string;
-  title: string;
-  department: string;
-  location: string;
-  type: string;
-  experience: string;
-  summary: string;
-  requirements: string[];
-}
-
-const openRoles: JobRole[] = [
-  {
-    id: "senior-architect",
-    title: "Senior Interior Architect",
-    department: "Architecture & Design",
-    location: "Mumbai (On-site / Studio)",
-    type: "Full-Time",
-    experience: "5–8 Years",
-    summary:
-      "Lead design development, spatial planning, and high-spec technical detailing for landmark corporate headquarters and ultra-luxury penthouses.",
-    requirements: [
-      "B.Arch / Diploma in Interior Architecture with proven luxury portfolio.",
-      "Expertise in AutoCAD, SketchUp, and technical construction documentation.",
-      "Track record of client presentations and vendor detailing.",
-    ],
-  },
-  {
-    id: "3d-visualizer",
-    title: "3D Visualizer & CAD Specialist",
-    department: "Visualization & Drafting",
-    location: "Mumbai / Pune (Studio)",
-    type: "Full-Time",
-    experience: "3–5 Years",
-    summary:
-      "Transform architectural schematics into hyper-photorealistic interior renderings, lighting studies, and precision millwork shop drawings.",
-    requirements: [
-      "High proficiency in 3ds Max, Corona/V-Ray, Photoshop, and AutoCAD.",
-      "Acute sensibility for material textures, natural illumination, and luxury styling.",
-      "Ability to interpret architectural blueprints and MEP coordinates rapidly.",
-    ],
-  },
-  {
-    id: "site-engineer",
-    title: "Site Execution Engineer (Civil & MEP)",
-    department: "Site Operations & Contracting",
-    location: "Mumbai (On-site)",
-    type: "Full-Time",
-    experience: "4–7 Years",
-    summary:
-      "Supervise daily site contracting, MEP integrations, false ceiling frameworks, and flawless quality compliance across active fit-out sites.",
-    requirements: [
-      "B.E. Civil / Diploma in Civil Engineering with turnkey interior experience.",
-      "Hands-on mastery of screeding, marble dry-lay, drywall systems, and MEP routing.",
-      "Stringent adherence to site safety, milestone timelines, and material verification.",
-    ],
-  },
-  {
-    id: "project-manager",
-    title: "Turnkey Fit-Out Project Manager",
-    department: "Project Management",
-    location: "Mumbai (Site & Studio)",
-    type: "Full-Time",
-    experience: "7+ Years",
-    summary:
-      "Full lifecycle ownership of commercial interior contracts: BOQ tracking, vendor orchestration, client liaison, and handover governance.",
-    requirements: [
-      "Extensive background managing commercial contracts upwards of 20,000 sq. ft.",
-      "Comprehensive mastery of project scheduling, procurement, and cost-variance control.",
-      "Exceptional leadership and negotiation acumen.",
-    ],
-  },
-];
+import { company, openRoles, type JobRole } from "@/lib/data";
 
 const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB
 
 export default function CareersPage() {
   const [selectedRole, setSelectedRole] = useState<string>("Senior Interior Architect");
+  const [activeCategory, setActiveCategory] = useState<string>("all");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -239,6 +172,21 @@ export default function CareersPage() {
     }
   };
 
+  const filteredRoles =
+    activeCategory === "all"
+      ? openRoles
+      : openRoles.filter((role) => role.category === activeCategory);
+
+  const isTradeOrSiteRole = [
+    "Site Supervisor / Fit-out Foreman",
+    "Master Joiner / Carpenter Lead (Woodwork & Millwork)",
+    "Finishing Specialist (PU Polish, Acoustic & Paint Lead)",
+    "MEP & Electrical Site Technician",
+    "Site Execution Engineer (Fit-Out & MEP)",
+    "Skilled Craftsman / Trade Application",
+    "Site Supervision Trainee",
+  ].includes(selectedRole);
+
   return (
     <div className="flex flex-col bg-[var(--bg-primary)] min-h-screen transition-colors duration-300">
       {/* ── EDITORIAL HEADER (Cinematic Dark Obsidian) ────────── */}
@@ -253,7 +201,7 @@ export default function CareersPage() {
               Build Exceptional Spaces With Us
             </h1>
             <p className="mt-4 text-sm sm:text-base text-neutral-400 font-sans leading-relaxed">
-              We are a team of meticulous engineers, interior architects, and master millwork craftsmen dedicated to structural excellence and aesthetic refinement. Explore our career opportunities across Mumbai and Pune.
+              We are a team of meticulous engineers, interior architects, and master millwork craftsmen dedicated to structural excellence and aesthetic refinement. Explore our career opportunities across India.
             </p>
           </div>
 
@@ -286,10 +234,10 @@ export default function CareersPage() {
                 Career Longevity
               </span>
               <p className="mt-1 text-sm text-[#F5F5F0] font-medium">
-                25-Year Industry Standing
+                Bespoke Architectural Execution
               </p>
               <p className="mt-1 text-xs text-neutral-400 leading-relaxed">
-                Clear leadership ladders, competitive compensation, and transparent recognition.
+                Clear leadership ladders, competitive compensation, and transparent recognition across India.
               </p>
             </div>
           </div>
@@ -300,19 +248,67 @@ export default function CareersPage() {
       <section className="py-20 bg-[var(--bg-surface)] border-b border-[var(--border-primary)] transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-2xl">
-            <span className="text-xs font-semibold tracking-[0.2em] text-[var(--accent-gold)] uppercase">
+            <span className="text-xs font-semibold tracking-[0.2em] text-[var(--accent-gold)] uppercase font-mono">
               Current Openings
             </span>
             <h2 className="mt-2 font-heading text-3xl sm:text-4xl text-[var(--text-primary)] tracking-tight">
               Opportunities Across Disciplines
             </h2>
             <p className="mt-2 text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
-              Select a position below to view responsibilities and begin your application.
+              Explore open positions spanning interior architecture, turnkey site management, and specialized craftsmanship trades across India.
             </p>
           </div>
 
-          <div className="mt-12 space-y-6">
-            {openRoles.map((role) => (
+          {/* Category Filter Tabs */}
+          <div className="mt-8 flex flex-wrap items-center gap-2 border-b border-[var(--border-primary)] pb-4">
+            <button
+              type="button"
+              onClick={() => setActiveCategory("all")}
+              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
+                activeCategory === "all"
+                  ? "bg-[#DFB163] text-[#0B0B0C] font-semibold shadow-sm"
+                  : "bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-primary)]"
+              }`}
+            >
+              All Positions ({openRoles.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("design")}
+              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
+                activeCategory === "design"
+                  ? "bg-[#DFB163] text-[#0B0B0C] font-semibold shadow-sm"
+                  : "bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-primary)]"
+              }`}
+            >
+              Design &amp; Architecture ({openRoles.filter((r) => r.category === "design").length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("execution")}
+              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
+                activeCategory === "execution"
+                  ? "bg-[#DFB163] text-[#0B0B0C] font-semibold shadow-sm"
+                  : "bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-primary)]"
+              }`}
+            >
+              Site Execution &amp; Supervision ({openRoles.filter((r) => r.category === "execution").length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("trades")}
+              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
+                activeCategory === "trades"
+                  ? "bg-[#DFB163] text-[#0B0B0C] font-semibold shadow-sm"
+                  : "bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-primary)]"
+              }`}
+            >
+              Master Trades &amp; Craftsmen ({openRoles.filter((r) => r.category === "trades").length})
+            </button>
+          </div>
+
+          <div className="mt-8 space-y-6">
+            {filteredRoles.map((role) => (
               <div
                 key={role.id}
                 className="group p-6 sm:p-8 bg-[var(--bg-primary)] border border-[var(--border-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:shadow-lg"
@@ -342,8 +338,27 @@ export default function CareersPage() {
                       {role.summary}
                     </p>
 
-                    {/* Requirements List */}
+                    {/* Scope of Execution Highlight */}
                     <div className="mt-4 pt-4 border-t border-[var(--border-primary)]">
+                      <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--accent-gold)] font-semibold mb-2.5 flex items-center gap-1.5">
+                        <Layers className="h-3.5 w-3.5 text-[var(--accent-gold)]" strokeWidth={1.5} />
+                        Scope of Execution &amp; Key Focus:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {role.scope.map((item) => (
+                          <span
+                            key={item}
+                            className="inline-flex items-center text-xs font-sans px-3 py-1.5 bg-[var(--bg-surface)] border border-[var(--border-primary)] text-[var(--text-primary)] font-medium"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] mr-2 shrink-0" />
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Requirements List */}
+                    <div className="mt-4 pt-3 border-t border-[var(--border-primary)]/60">
                       <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-primary)] font-semibold mb-2">
                         Key Qualifications:
                       </p>
@@ -511,7 +526,7 @@ export default function CareersPage() {
                   htmlFor="position"
                   className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] font-mono mb-2"
                 >
-                  Position Applied *
+                  Role / Designation Applied For *
                 </label>
                 <select
                   id="position"
@@ -520,17 +535,25 @@ export default function CareersPage() {
                   onChange={(e) => setSelectedRole(e.target.value)}
                   className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none transition-colors cursor-pointer"
                 >
-                  {openRoles.map((r) => (
-                    <option key={r.id} value={r.title}>
-                      {r.title} ({r.department})
-                    </option>
-                  ))}
-                  <option value="General Architectural Inquiry">
-                    General Architectural Inquiry
-                  </option>
-                  <option value="Site Supervision Trainee">
-                    Site Supervision Trainee
-                  </option>
+                  <optgroup label="Architecture & Design">
+                    <option value="Senior Interior Architect">Senior Interior Architect</option>
+                    <option value="3D Visualizer & CAD Specialist">3D Visualizer & CAD Specialist</option>
+                    <option value="Turnkey Fit-Out Project Manager">Turnkey Fit-Out Project Manager</option>
+                  </optgroup>
+                  <optgroup label="On-Site Execution & Supervision">
+                    <option value="Site Execution Engineer (Fit-Out & MEP)">Site Execution Engineer (Fit-Out & MEP)</option>
+                    <option value="Site Supervisor / Fit-out Foreman">Site Supervisor / Fit-out Foreman</option>
+                  </optgroup>
+                  <optgroup label="Skilled Execution Trades & Craftsmen">
+                    <option value="Master Joiner / Carpenter Lead (Woodwork & Millwork)">Master Joiner / Carpenter Lead (Woodwork & Millwork)</option>
+                    <option value="Finishing Specialist (PU Polish, Acoustic & Paint Lead)">Finishing Specialist (PU Polish, Acoustic & Paint Lead)</option>
+                    <option value="MEP & Electrical Site Technician">MEP & Electrical Site Technician</option>
+                  </optgroup>
+                  <optgroup label="General Applications">
+                    <option value="General Architectural Inquiry">General Architectural Inquiry</option>
+                    <option value="Skilled Craftsman / Trade Application">Skilled Craftsman / Trade Application</option>
+                    <option value="Site Supervision Trainee">Site Supervision Trainee</option>
+                  </optgroup>
                 </select>
               </div>
             </div>
@@ -556,7 +579,7 @@ export default function CareersPage() {
                   <option value="3–5 Years">3–5 Years (Mid Level)</option>
                   <option value="5–8 Years">5–8 Years (Senior Level)</option>
                   <option value="8+ Years">8+ Years (Principal / Lead)</option>
-                  <option value="Fresh Graduate">Graduate / Intern</option>
+                  <option value="Fresh Graduate">Graduate / Apprentice</option>
                 </select>
               </div>
 
@@ -566,7 +589,7 @@ export default function CareersPage() {
                   htmlFor="portfolioUrl"
                   className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] font-mono mb-2"
                 >
-                  Portfolio / LinkedIn URL
+                  Portfolio / LinkedIn URL (Optional)
                 </label>
                 <input
                   type="url"
@@ -580,11 +603,34 @@ export default function CareersPage() {
               </div>
             </div>
 
+            {/* Note for Trade & Execution Applicants */}
+            {isTradeOrSiteRole && (
+              <div className="p-4 sm:p-5 bg-[var(--bg-primary)] border border-[var(--accent-gold)]/40 flex items-start gap-3.5">
+                <Sparkles className="h-5 w-5 text-[var(--accent-gold)] shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="text-xs font-mono uppercase tracking-wider text-[var(--accent-gold)] font-semibold">
+                    Craftsman &amp; Site Execution Guidance
+                  </p>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
+                    A formal resume PDF is <strong>optional</strong>. If you do not have a digital CV document, you may leave the file upload blank and describe your on-site trade skills, contractor background, or past projects in the <em>Work Summary</em> box below.
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* Resume / Portfolio Attachment */}
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] font-mono mb-2">
-                Resume / Dossier (PDF, DOC, DOCX — Max 4MB)
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] font-mono">
+                  Resume / Dossier (Optional — PDF, DOC, DOCX — Max 4MB)
+                </label>
+                <span className="text-[11px] font-mono text-[var(--accent-gold)]">
+                  Optional for Trade Craftsmen
+                </span>
+              </div>
+              <p className="text-xs text-[var(--text-secondary)] mb-2.5 font-sans">
+                Craftsmen & trade leads without a formal CV PDF may leave this empty and detail past work in the summary box below.
+              </p>
 
               <input
                 ref={fileInputRef}
@@ -651,7 +697,7 @@ export default function CareersPage() {
                 htmlFor="message"
                 className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] font-mono mb-2"
               >
-                Cover Note / Key Strengths
+                Work Summary / Trade Experience / Cover Note
               </label>
               <textarea
                 id="message"
@@ -659,7 +705,7 @@ export default function CareersPage() {
                 rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Detail your experience with turnkey interior contracting, software skills, or landmark projects executed..."
+                placeholder="For site supervisors & skilled trades: detail your hands-on execution experience, past fit-out projects, joinery, PU polish, electrical, or foreman track record. For design roles: outline software skills, portfolio overview, and landmark projects executed..."
                 className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/60 focus:border-[var(--accent-gold)] focus:outline-none transition-colors resize-none"
               />
             </div>
@@ -686,6 +732,25 @@ export default function CareersPage() {
               </button>
             </div>
           </form>
+
+          {/* Direct Assistance for Trade Applicants */}
+          <div className="mt-8 p-6 bg-[var(--bg-surface)] border border-[var(--border-primary)] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3 text-xs text-[var(--text-secondary)] font-sans">
+              <Phone className="h-5 w-5 text-[var(--accent-gold)] shrink-0" />
+              <span>
+                Applying as a skilled site foreman, carpenter, painter, or MEP technician and prefer direct phone/WhatsApp communication?
+              </span>
+            </div>
+            <a
+              href="https://wa.me/919820401179?text=Hi%2C%20I%20am%20applying%20for%20an%20on-site%20execution%20%2F%20craftsman%20position%20at%20GK%20Space%20Solutions."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-[#DFB163] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#0B0B0C] transition-all hover:bg-white shrink-0"
+            >
+              <span>WhatsApp Recruitment</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </div>
       </section>
 

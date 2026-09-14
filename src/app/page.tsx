@@ -12,13 +12,11 @@ import {
   Clock,
   Compass,
 } from "lucide-react";
-import ProjectShowcase from "@/components/ProjectShowcase";
+import HomePortfolioShowcase from "@/components/HomePortfolioShowcase";
 import HeroSlider from "@/components/HeroSlider";
 import ArchitecturalStatsBand from "@/components/ArchitecturalStatsBand";
 import HomeContact from "@/components/HomeContact";
 import {
-  company,
-  companyStats,
   servicesPreview,
   whyChoosePillars,
 } from "@/lib/data";
@@ -36,11 +34,11 @@ export default function Home() {
       <section className="relative py-20 bg-[var(--bg-surface)] border-b border-[var(--border-primary)] transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           {/* Editorial Excerpt */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pb-16 border-b border-[var(--border-primary)]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5">
               <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[var(--accent-gold)] uppercase">
                 <Clock className="h-3.5 w-3.5" strokeWidth={1.25} />
-                25 Years of Industry Leadership
+                Proven Industry Leadership
               </span>
               <h2 className="mt-3 font-heading text-3xl sm:text-4xl text-[var(--text-primary)] tracking-tight">
                 Engineering spaces of consequence with uncompromising integrity.
@@ -48,7 +46,7 @@ export default function Home() {
             </div>
             <div className="lg:col-span-7">
               <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
-                Founded in 2000, GK Space Solutions LLP has cultivated an enduring reputation as a premier interior contracting partner for architects, corporations, and discerning homeowners. We bridge the gap between architectural vision and buildable reality with disciplined engineering, in-house millwork, and full turnkey governance.
+                GK Space Solutions LLP delivers bespoke architectural execution and precision turnkey fit-outs for leading architects, corporations, and discerning homeowners across India. We bridge the gap between architectural vision and buildable reality with disciplined engineering, in-house millwork, and full turnkey governance.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-6">
                 <Link
@@ -68,31 +66,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Stats Metric Cards */}
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {companyStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="relative flex flex-col p-6 bg-[var(--bg-primary)] border border-[var(--border-primary)] transition-all duration-300 hover:border-[var(--accent-gold)] hover:shadow-md"
-              >
-                <span className="font-heading text-4xl sm:text-5xl font-light text-[var(--text-primary)] tracking-tight">
-                  {stat.value}
-                </span>
-                <span className="mt-2 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--accent-gold)] font-mono">
-                  {stat.label}
-                </span>
-                <p className="mt-3 text-xs text-[var(--text-secondary)] leading-relaxed">
-                  {stat.subtext}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* ── 3. OUTSTANDING PROJECTS SHOWCASE (15 Image Grid) ── */}
-      <ProjectShowcase />
+      <HomePortfolioShowcase />
 
       {/* ── 4. SERVICES PREVIEW ──────────────────────────────── */}
       <section className="py-24 sm:py-32 bg-[var(--bg-surface)] border-t border-[var(--border-primary)] transition-colors duration-300">
@@ -107,7 +85,7 @@ export default function Home() {
                 Turnkey Execution & Bespoke Millwork
               </h2>
               <p className="mt-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed font-sans">
-                From structural civil execution to micro-tolerance custom furniture, we provide unified single-source accountability.
+                From structural interior execution to micro-tolerance custom furniture, we provide unified single-source accountability.
               </p>
             </div>
 
@@ -209,7 +187,7 @@ export default function Home() {
                       Dedicated Millwork Facility
                     </h4>
                     <p className="mt-1 text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
-                      Our Mumbai-based production facility houses modern edge-banding, CNC sizing, and finishing chambers for turnkey joinery.
+                      Our in-house production facility houses modern edge-banding, CNC sizing, and finishing chambers for turnkey joinery.
                     </p>
                   </div>
                 </div>
