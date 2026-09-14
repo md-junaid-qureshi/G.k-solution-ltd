@@ -22,8 +22,7 @@ export const navigation: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Portfolio PPT", href: "/portfolio" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
@@ -60,7 +59,7 @@ export const socialLinks: SocialLink[] = [
 export const footerQuickLinks: NavItem[] = [
   { label: "About Us", href: "/about" },
   { label: "Our Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];

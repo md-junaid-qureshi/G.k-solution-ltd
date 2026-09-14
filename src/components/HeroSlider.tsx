@@ -120,7 +120,7 @@ export default function HeroSlider() {
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative h-[780px] sm:h-[840px] md:h-[880px] lg:h-[920px] flex items-center justify-center overflow-hidden bg-[#141312] text-[#F5F5F0] select-none"
+      className="relative h-[55vh] sm:h-[75vh] md:h-[85vh] flex items-center justify-center overflow-hidden bg-[#0c0c0c] text-[#F5F5F0] select-none"
     >
       {/* ── Background Slides with Ken Burns Effect & 800ms Cross-Fade ── */}
       <AnimatePresence mode="sync">
@@ -130,13 +130,13 @@ export default function HeroSlider() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="absolute inset-0 z-0 overflow-hidden"
+          className="absolute inset-0 z-0 overflow-hidden bg-[#0c0c0c]"
         >
           <motion.div
             initial={{ scale: 1 }}
             animate={{ scale: 1.06 }}
             transition={{ duration: 7, ease: "easeOut" }}
-            className="relative h-full w-full"
+            className="relative h-full w-full bg-[#0c0c0c]"
           >
             <Image
               src={slide.image}
@@ -144,7 +144,7 @@ export default function HeroSlider() {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center"
+              className="object-contain sm:object-cover w-full h-full object-center"
             />
           </motion.div>
 
@@ -247,11 +247,10 @@ export default function HeroSlider() {
               className="group py-1 focus:outline-none cursor-pointer"
             >
               <span
-                className={`block h-1 rounded-full transition-all duration-500 ${
-                  isActive
+                className={`block h-1 rounded-full transition-all duration-500 ${isActive
                     ? "w-8 sm:w-10 bg-[#C5A059]"
                     : "w-3 bg-white/40 group-hover:bg-white/70"
-                }`}
+                  }`}
               />
             </button>
           );
