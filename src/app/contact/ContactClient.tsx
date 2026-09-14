@@ -1,22 +1,24 @@
 "use client";
 
-import { useState, useActionState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, ShieldCheck } from "lucide-react";
-import { submitContactInquiry, type ContactResponse } from "@/app/actions/contact";
+import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, ShieldCheck, AlertCircle } from "lucide-react";
 import { company } from "@/lib/data";
 
 export default function ContactClient() {
   const searchParams = useSearchParams();
   const projectParam = searchParams.get("project") || "";
 
-  const [state, formAction, isPending] = useActionState<ContactResponse | null, FormData>(
-    submitContactInquiry,
-    null
-  );
-
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [project, setProject] = useState(projectParam);
+  const [message, setMessage] = useState("");
+
   const [phoneError, setPhoneError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value;
@@ -35,12 +37,55 @@ export default function ContactClient() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErrorMessage(null);
+
     if (phone.length < 10) {
-      e.preventDefault();
       setPhoneError("Please enter a valid 10-digit mobile number.");
       const input = document.getElementById("phone");
       if (input) input.focus();
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "inquiry",
+          name: fullName,
+          email,
+          phone,
+          projectType: project,
+          message,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error?.message || data.error || "Failed to transmit inquiry.");
+      }
+
+      // Success
+      setSuccessMessage("Thank you. Your architectural inquiry has been sent to our executive team.");
+      setFullName("");
+      setEmail("");
+      setPhone("");
+      setProject("");
+      setMessage("");
+    } catch (err: any) {
+      console.error("[FORM SUBMIT ERROR]:", err);
+      setErrorMessage(
+        err.message || "An unexpected error occurred. Please try again or contact us directly."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -116,20 +161,26 @@ export default function ContactClient() {
 
       {/* Right: Contact / Inquiry Form */}
       <div className="lg:col-span-7 bg-[var(--bg-surface)] border border-[var(--border-primary)] p-8 sm:p-10 shadow-sm transition-colors">
-        {state?.success ? (
+        {successMessage ? (
           <div className="py-12 px-4 text-center">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[var(--accent-gold)]/10 text-[var(--accent-gold)] mb-4">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[var(--accent-gold)]/15 text-[var(--accent-gold)] mb-4">
               <CheckCircle2 className="h-8 w-8" strokeWidth={1.25} />
             </div>
             <h3 className="font-heading text-2xl text-[var(--text-primary)]">
               Inquiry Dispatched Successfully
             </h3>
             <p className="mt-3 text-sm text-[var(--text-secondary)] max-w-md mx-auto leading-relaxed">
-              {state.message}
+              {successMessage}
             </p>
+            <button
+              onClick={() => setSuccessMessage(null)}
+              className="mt-6 inline-flex items-center gap-2 border border-[var(--border-primary)] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-colors cursor-pointer"
+            >
+              Send Another Inquiry
+            </button>
           </div>
         ) : (
-          <form action={formAction} onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)]">
                 Project Inquiry Form
@@ -139,9 +190,10 @@ export default function ContactClient() {
               </h2>
             </div>
 
-            {state?.message && !state.success && (
-              <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs leading-relaxed">
-                {state.message}
+            {errorMessage && (
+              <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs leading-relaxed flex items-start gap-2.5">
+                <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" strokeWidth={1.25} />
+                <span>{errorMessage}</span>
               </div>
             )}
 
@@ -158,12 +210,11 @@ export default function ContactClient() {
                   name="fullName"
                   type="text"
                   required
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   placeholder="e.g. Rahul Mehta"
                   className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors"
                 />
-                {state?.errors?.fullName && (
-                  <p className="mt-1 text-xs text-red-500">{state.errors.fullName}</p>
-                )}
               </div>
 
               <div>
@@ -178,12 +229,11 @@ export default function ContactClient() {
                   name="email"
                   type="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
                   className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors"
                 />
-                {state?.errors?.email && (
-                  <p className="mt-1 text-xs text-red-500">{state.errors.email}</p>
-                )}
               </div>
             </div>
 
@@ -213,9 +263,9 @@ export default function ContactClient() {
                     className="w-full bg-transparent px-3 py-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/50 focus:outline-none"
                   />
                 </div>
-                {(phoneError || state?.errors?.phone) && (
+                {phoneError && (
                   <p className="mt-1.5 text-xs text-red-500 font-sans">
-                    {phoneError || state?.errors?.phone}
+                    {phoneError}
                   </p>
                 )}
               </div>
@@ -231,7 +281,8 @@ export default function ContactClient() {
                   id="project"
                   name="project"
                   type="text"
-                  defaultValue={projectParam}
+                  value={project}
+                  onChange={(e) => setProject(e.target.value)}
                   placeholder="e.g. Modern Office Reception Lounge"
                   className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors"
                 />
@@ -250,20 +301,19 @@ export default function ContactClient() {
                 name="message"
                 rows={4}
                 required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="Share your carpet area, timeline, architectural drawings status, or specific joinery requirements..."
                 className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors resize-none"
               />
-              {state?.errors?.message && (
-                <p className="mt-1 text-xs text-red-500">{state.errors.message}</p>
-              )}
             </div>
 
             <button
               type="submit"
-              disabled={isPending}
-              className="w-full inline-flex items-center justify-center gap-2 bg-[var(--accent-gold)] text-neutral-950 font-semibold uppercase tracking-[0.18em] text-xs py-4 px-6 transition-all duration-300 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black disabled:opacity-50 shadow-sm"
+              disabled={isSubmitting}
+              className="w-full inline-flex items-center justify-center gap-2 bg-[var(--accent-gold)] text-neutral-950 font-semibold uppercase tracking-[0.18em] text-xs py-4 px-6 transition-all duration-300 hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-black disabled:opacity-50 shadow-sm cursor-pointer"
             >
-              {isPending ? "Transmitting Inquiry..." : "Submit Project Inquiry"}
+              {isSubmitting ? "Sending Inquiry..." : "Submit Project Inquiry"}
               <Send className="h-4 w-4" strokeWidth={1.25} />
             </button>
           </form>

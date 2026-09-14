@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useRef } from "react";
 import {
   Briefcase,
   MapPin,
@@ -9,14 +9,12 @@ import {
   CheckCircle2,
   AlertCircle,
   UploadCloud,
+  FileText,
+  X,
   Send,
-  Building,
-  GraduationCap,
-  Sparkles,
   Phone,
   Mail,
 } from "lucide-react";
-import { submitApplication, type ApplicationResponse } from "@/app/actions/apply";
 import { company } from "@/lib/data";
 
 interface JobRole {
@@ -93,10 +91,23 @@ const openRoles: JobRole[] = [
   },
 ];
 
+const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB
+
 export default function CareersPage() {
   const [selectedRole, setSelectedRole] = useState<string>("Senior Interior Architect");
-  const [isPending, startTransition] = useTransition();
-  const [result, setResult] = useState<ApplicationResponse | null>(null);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [experience, setExperience] = useState("3–5 Years");
+  const [portfolioUrl, setPortfolioUrl] = useState("");
+  const [message, setMessage] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleRoleSelect = (roleTitle: string) => {
     setSelectedRole(roleTitle);
@@ -106,17 +117,126 @@ export default function CareersPage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const digitsOnly = raw.replace(/\D/g, "").slice(0, 10);
+    setPhone(digitsOnly);
+    if (phoneError && digitsOnly.length === 10) {
+      setPhoneError("");
+    }
+  };
 
-    startTransition(async () => {
-      const response = await submitApplication(null, formData);
-      setResult(response);
-      if (response.success) {
-        (e.target as HTMLFormElement).reset();
-      }
+  const handlePhoneBlur = () => {
+    if (phone && phone.length < 10) {
+      setPhoneError("Please enter a valid 10-digit mobile number.");
+    } else {
+      setPhoneError("");
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFileError(null);
+    const selected = e.target.files?.[0];
+    if (!selected) {
+      setFile(null);
+      return;
+    }
+
+    if (selected.size > MAX_FILE_SIZE) {
+      setFileError("File exceeds the 4MB limit. Please upload a compressed document or provide a portfolio link.");
+      setFile(null);
+      if (e.target) e.target.value = "";
+      return;
+    }
+
+    setFile(selected);
+  };
+
+  const removeFile = () => {
+    setFile(null);
+    setFileError(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const readFileAsBase64 = (f: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(f);
     });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setResult(null);
+
+    if (phone.length < 10) {
+      setPhoneError("Please enter a valid 10-digit mobile number.");
+      const phoneInput = document.getElementById("phone");
+      if (phoneInput) phoneInput.focus();
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      let resumePayload = undefined;
+      if (file) {
+        const base64Content = await readFileAsBase64(file);
+        resumePayload = {
+          filename: file.name,
+          content: base64Content,
+        };
+      }
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "career",
+          name: fullName,
+          email,
+          phone,
+          role: selectedRole,
+          experience,
+          portfolioUrl,
+          message,
+          resume: resumePayload,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error?.message || data.error || "Failed to submit application.");
+      }
+
+      setResult({
+        success: true,
+        message: `Thank you, ${fullName}. Your candidacy for the ${selectedRole} position has been transmitted directly to our executive hiring team.`,
+      });
+
+      // Reset form
+      setFullName("");
+      setEmail("");
+      setPhone("");
+      setPortfolioUrl("");
+      setMessage("");
+      removeFile();
+    } catch (err: any) {
+      console.error("[APPLICATION SUBMIT ERROR]:", err);
+      setResult({
+        success: false,
+        message: err.message || "An unexpected error occurred while transmitting your application. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -249,7 +369,7 @@ export default function CareersPage() {
                     <button
                       type="button"
                       onClick={() => handleRoleSelect(role.title)}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#DFB163] px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-[#0B0B0C] transition-all duration-300 hover:bg-white"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#DFB163] px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-[#0B0B0C] transition-all duration-300 hover:bg-white cursor-pointer"
                     >
                       Apply For This Role
                       <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.25} />
@@ -266,7 +386,7 @@ export default function CareersPage() {
       <section id="apply-form" className="py-24 bg-[var(--bg-primary)] transition-colors duration-300">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-xs font-semibold tracking-[0.2em] text-[var(--accent-gold)] uppercase">
+            <span className="text-xs font-semibold tracking-[0.2em] text-[var(--accent-gold)] uppercase font-mono">
               Direct Application Portal
             </span>
             <h2 className="mt-2 font-heading text-3xl sm:text-4xl text-[var(--text-primary)] tracking-tight">
@@ -294,7 +414,7 @@ export default function CareersPage() {
                 )}
                 <div>
                   <h4 className="font-heading text-base font-semibold">
-                    {result.success ? "Application Successfully Transmitted" : "Submission Required Attention"}
+                    {result.success ? "Application Successfully Transmitted" : "Submission Requires Attention"}
                   </h4>
                   <p className="mt-1 text-xs sm:text-sm leading-relaxed">
                     {result.message}
@@ -323,6 +443,8 @@ export default function CareersPage() {
                   id="fullName"
                   name="fullName"
                   required
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   placeholder="e.g. Rahul Sharma"
                   className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/60 focus:border-[var(--accent-gold)] focus:outline-none transition-colors"
                 />
@@ -341,6 +463,8 @@ export default function CareersPage() {
                   id="email"
                   name="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@domain.com"
                   className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/60 focus:border-[var(--accent-gold)] focus:outline-none transition-colors"
                 />
@@ -356,14 +480,29 @@ export default function CareersPage() {
                 >
                   Contact Telephone *
                 </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  placeholder="+91 98204 01179"
-                  className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/60 focus:border-[var(--accent-gold)] focus:outline-none transition-colors"
-                />
+                <div className="flex items-center bg-[var(--bg-primary)] border border-[var(--border-primary)] focus-within:border-[var(--accent-gold)] transition-colors">
+                  <span className="flex items-center px-3 py-3 border-r border-[var(--border-primary)] text-xs font-mono text-[var(--accent-gold)] select-none bg-[var(--bg-surface)] font-medium">
+                    +91
+                  </span>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    inputMode="numeric"
+                    maxLength={10}
+                    required
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    onBlur={handlePhoneBlur}
+                    placeholder="98204 01179"
+                    className="w-full bg-transparent px-3 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/60 focus:outline-none"
+                  />
+                </div>
+                {phoneError && (
+                  <p className="mt-1.5 text-xs text-red-500 font-sans">
+                    {phoneError}
+                  </p>
+                )}
               </div>
 
               {/* Position Applied */}
@@ -379,7 +518,7 @@ export default function CareersPage() {
                   name="position"
                   value={selectedRole}
                   onChange={(e) => setSelectedRole(e.target.value)}
-                  className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none transition-colors"
+                  className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none transition-colors cursor-pointer"
                 >
                   {openRoles.map((r) => (
                     <option key={r.id} value={r.title}>
@@ -409,8 +548,9 @@ export default function CareersPage() {
                   id="experience"
                   name="experience"
                   required
-                  defaultValue="3–5 Years"
-                  className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none transition-colors"
+                  value={experience}
+                  onChange={(e) => setExperience(e.target.value)}
+                  className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none transition-colors cursor-pointer"
                 >
                   <option value="1–3 Years">1–3 Years (Junior Level)</option>
                   <option value="3–5 Years">3–5 Years (Mid Level)</option>
@@ -432,10 +572,77 @@ export default function CareersPage() {
                   type="url"
                   id="portfolioUrl"
                   name="portfolioUrl"
+                  value={portfolioUrl}
+                  onChange={(e) => setPortfolioUrl(e.target.value)}
                   placeholder="https://drive.google.com/... or linkedin.com/in/..."
                   className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/60 focus:border-[var(--accent-gold)] focus:outline-none transition-colors"
                 />
               </div>
+            </div>
+
+            {/* Resume / Portfolio Attachment */}
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] font-mono mb-2">
+                Resume / Dossier (PDF, DOC, DOCX — Max 4MB)
+              </label>
+
+              <input
+                ref={fileInputRef}
+                type="file"
+                id="resumeUpload"
+                name="resumeUpload"
+                accept=".pdf,.doc,.docx"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+
+              {!file ? (
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  className="group relative flex flex-col items-center justify-center p-6 border-2 border-dashed border-[var(--border-primary)] hover:border-[var(--accent-gold)] bg-[var(--bg-primary)] transition-all cursor-pointer text-center"
+                >
+                  <div className="p-3 rounded-full bg-[var(--accent-gold)]/10 text-[var(--accent-gold)] mb-3 group-hover:scale-110 transition-transform">
+                    <UploadCloud className="h-6 w-6" strokeWidth={1.5} />
+                  </div>
+                  <p className="text-xs sm:text-sm font-medium text-[var(--text-primary)]">
+                    Click to select resume document
+                  </p>
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-1 font-mono">
+                    Supported formats: .pdf, .doc, .docx (Max 4MB)
+                  </p>
+                </div>
+              ) : (
+                <div className="flex items-center justify-between p-4 bg-[var(--bg-primary)] border border-[var(--accent-gold)]/60">
+                  <div className="flex items-center gap-3 overflow-hidden">
+                    <div className="p-2 rounded bg-[var(--accent-gold)]/15 text-[var(--accent-gold)] flex-shrink-0">
+                      <FileText className="h-5 w-5" strokeWidth={1.5} />
+                    </div>
+                    <div className="overflow-hidden">
+                      <p className="text-xs sm:text-sm font-medium text-[var(--text-primary)] truncate">
+                        {file.name}
+                      </p>
+                      <p className="text-[10px] font-mono text-[var(--text-secondary)]">
+                        {(file.size / (1024 * 1024)).toFixed(2)} MB
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={removeFile}
+                    className="p-1.5 text-neutral-400 hover:text-red-500 transition-colors cursor-pointer"
+                    title="Remove file"
+                  >
+                    <X className="h-4 w-4" strokeWidth={1.5} />
+                  </button>
+                </div>
+              )}
+
+              {fileError && (
+                <div className="mt-2 flex items-center gap-1.5 text-xs text-red-500 font-sans">
+                  <AlertCircle className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} />
+                  <span>{fileError}</span>
+                </div>
+              )}
             </div>
 
             {/* Message / Cover Note */}
@@ -450,6 +657,8 @@ export default function CareersPage() {
                 id="message"
                 name="message"
                 rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="Detail your experience with turnkey interior contracting, software skills, or landmark projects executed..."
                 className="w-full bg-[var(--bg-primary)] border border-[var(--border-primary)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder-[var(--text-secondary)]/60 focus:border-[var(--accent-gold)] focus:outline-none transition-colors resize-none"
               />
@@ -463,11 +672,11 @@ export default function CareersPage() {
 
               <button
                 type="submit"
-                disabled={isPending}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#DFB163] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#0B0B0C] transition-all duration-300 hover:bg-white disabled:opacity-50"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#DFB163] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#0B0B0C] transition-all duration-300 hover:bg-white disabled:opacity-50 cursor-pointer shadow-sm"
               >
-                {isPending ? (
-                  <span>Submitting Dossier...</span>
+                {isSubmitting ? (
+                  <span>Submitting Application...</span>
                 ) : (
                   <>
                     <span>Submit Application</span>
