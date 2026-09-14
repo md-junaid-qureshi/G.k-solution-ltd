@@ -1,52 +1,269 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="smoked-slate"], [data-theme="smoked-slate"] *, [data-theme="emerald-brass"], [data-theme="emerald-brass"] *, [data-theme="midnight-obsidian"], [data-theme="midnight-obsidian"] *, [data-theme="royal-navy"], [data-theme="royal-navy"] *, [data-theme="espresso-bronze"], [data-theme="espresso-bronze"] *));
 
-/* ── Studio McGee Editorial Luxury Theme Tokens ─────────────── */
+/* ── Architectural Design System: 8-Token Hierarchical Palettes ─────────────── */
 
-:root {
-  /* Warm Alabaster / Linen Base */
-  --bg-primary: #FBF9F5;
+/* 1. Warm Linen (Original Unaltered Baseline) */
+:root, [data-theme="warm-linen"], [data-theme="light"], .light {
+  --bg-base: #FBFBFA;
+  --bg-alt: #F4F1EA;
   --bg-surface: #FFFFFF;
-  --text-primary: #1C1917;
-  --text-secondary: #57534E;
-  --border-primary: #EBE7DF;
-  --accent-gold: #C5A059;
+  --bg-contrast: #1C1917;
+  --text-heading: #1C1917;
+  --text-body: #57534E;
+  --text-muted: #A8A29E;
+  --accent: #C5A880;
+  --accent-hover: #AF8F63;
+  --border-ui: #E7E5E4;
 
-  /* Backward compatibility tokens */
-  --brand-dark: #1C1917;
-  --brand-brass: #C5A059;
-  --brand-light: #FBF9F5;
-  --brand-border: #EBE7DF;
-  --brand-muted: #57534E;
-  --brand-white: #FFFFFF;
+  /* Backward compatibility bridge */
+  --bg-page: var(--bg-base);
+  --bg-primary: var(--bg-base);
+  --bg-card: var(--bg-surface);
+  --border-subtle: var(--border-ui);
+  --border-primary: var(--border-ui);
+  --text-primary: var(--text-heading);
+  --text-secondary: var(--text-body);
+  --accent-gold: var(--accent);
+  --brand-dark: var(--text-heading);
+  --brand-brass: var(--accent);
+  --brand-light: var(--bg-base);
+  --brand-border: var(--border-ui);
+  --brand-muted: var(--text-body);
+  --brand-white: var(--bg-surface);
 }
 
-.dark {
-  /* Editorial Matte Charcoal Theme */
-  --bg-primary: #141312;
-  --bg-surface: #1C1A18;
-  --text-primary: #FBF9F5;
-  --text-secondary: #A8A29E;
-  --border-primary: #292524;
-  --accent-gold: #DFB163;
+/* 2. Monolith Minimalist (Architectural Off-White & Smoked Graphite) */
+[data-theme="monolith"] {
+  --bg-base: #F7F7F8;
+  --bg-alt: #ECECEE;
+  --bg-surface: #FFFFFF;
+  --bg-contrast: #111113;
+  --text-heading: #0A0A0C;
+  --text-body: #4A4A52;
+  --text-muted: #8E8E98;
+  --accent: #C69A5A;
+  --accent-hover: #AB8144;
+  --border-ui: #DFDFE3;
 
-  /* Backward compatibility tokens in dark mode */
-  --brand-dark: #FBF9F5;
-  --brand-brass: #DFB163;
-  --brand-light: #1C1A18;
-  --brand-border: #292524;
-  --brand-muted: #A8A29E;
-  --brand-white: #1C1A18;
+  /* Backward compatibility bridge */
+  --bg-page: var(--bg-base);
+  --bg-primary: var(--bg-base);
+  --bg-card: var(--bg-surface);
+  --border-subtle: var(--border-ui);
+  --border-primary: var(--border-ui);
+  --text-primary: var(--text-heading);
+  --text-secondary: var(--text-body);
+  --accent-gold: var(--accent);
+  --brand-dark: var(--text-heading);
+  --brand-brass: var(--accent);
+  --brand-light: var(--bg-base);
+  --brand-border: var(--border-ui);
+  --brand-muted: var(--text-body);
+  --brand-white: var(--bg-surface);
+}
+
+/* 3. Smoked Slate (Executive Hospitality Multi-Tone) */
+[data-theme="smoked-slate"], [data-theme="dark"], .dark {
+  --bg-base: #181A1C;
+  --bg-alt: #131416;
+  --bg-surface: #222528;
+  --bg-contrast: #0D0E0F;
+  --text-heading: #F5F5F6;
+  --text-body: #B0B5B9;
+  --text-muted: #6B7278;
+  --accent: #E2A765;
+  --accent-hover: #CB8E4A;
+  --border-ui: #2D3236;
+
+  /* Backward compatibility bridge */
+  --bg-page: var(--bg-base);
+  --bg-primary: var(--bg-base);
+  --bg-card: var(--bg-surface);
+  --border-subtle: var(--border-ui);
+  --border-primary: var(--border-ui);
+  --text-primary: var(--text-heading);
+  --text-secondary: var(--text-body);
+  --accent-gold: var(--accent);
+  --brand-dark: var(--text-heading);
+  --brand-brass: var(--accent);
+  --brand-light: var(--bg-base);
+  --brand-border: var(--border-ui);
+  --brand-muted: var(--text-body);
+  --brand-white: var(--bg-surface);
+}
+
+/* 4. Forest Emerald & Aged Brass (Deep Biophilic Architectural) */
+[data-theme="emerald-brass"] {
+  --bg-base: #0E1713;
+  --bg-alt: #080E0B;
+  --bg-surface: #16241E;
+  --bg-contrast: #040705;
+  --text-heading: #F1EFEA;
+  --text-body: #9FB2A7;
+  --text-muted: #62756A;
+  --accent: #D1AB6C;
+  --accent-hover: #B89255;
+  --border-ui: #22372E;
+
+  /* Backward compatibility bridge */
+  --bg-page: var(--bg-base);
+  --bg-primary: var(--bg-base);
+  --bg-card: var(--bg-surface);
+  --border-subtle: var(--border-ui);
+  --border-primary: var(--border-ui);
+  --text-primary: var(--text-heading);
+  --text-secondary: var(--text-body);
+  --accent-gold: var(--accent);
+  --brand-dark: var(--text-heading);
+  --brand-brass: var(--accent);
+  --brand-light: var(--bg-base);
+  --brand-border: var(--border-ui);
+  --brand-muted: var(--text-body);
+  --brand-white: var(--bg-surface);
+}
+
+/* 5. Midnight Obsidian & Platinum (High-Tech Architectural Dark) */
+[data-theme="midnight-obsidian"] {
+  --bg-base: #0C0C0E;
+  --bg-alt: #141418;
+  --bg-surface: #1B1B20;
+  --bg-contrast: #000000;
+  --text-heading: #FFFFFF;
+  --text-body: #A1A1AA;
+  --text-muted: #52525B;
+  --accent: #38BDF8;
+  --accent-hover: #0EA5E9;
+  --border-ui: #272730;
+
+  /* Backward compatibility bridge */
+  --bg-page: var(--bg-base);
+  --bg-primary: var(--bg-base);
+  --bg-card: var(--bg-surface);
+  --border-subtle: var(--border-ui);
+  --border-primary: var(--border-ui);
+  --text-primary: var(--text-heading);
+  --text-secondary: var(--text-body);
+  --accent-gold: var(--accent);
+  --brand-dark: var(--text-heading);
+  --brand-brass: var(--accent);
+  --brand-light: var(--bg-base);
+  --brand-border: var(--border-ui);
+  --brand-muted: var(--text-body);
+  --brand-white: var(--bg-surface);
+}
+
+/* 6. Royal Navy & Polished Champagne (Corporate Boardroom Prestige) */
+[data-theme="royal-navy"] {
+  --bg-base: #0B132B;
+  --bg-alt: #060B19;
+  --bg-surface: #142044;
+  --bg-contrast: #03060D;
+  --text-heading: #F8FAFC;
+  --text-body: #94A3B8;
+  --text-muted: #64748B;
+  --accent: #F4C47E;
+  --accent-hover: #DBA85E;
+  --border-ui: #1E3060;
+
+  /* Backward compatibility bridge */
+  --bg-page: var(--bg-base);
+  --bg-primary: var(--bg-base);
+  --bg-card: var(--bg-surface);
+  --border-subtle: var(--border-ui);
+  --border-primary: var(--border-ui);
+  --text-primary: var(--text-heading);
+  --text-secondary: var(--text-body);
+  --accent-gold: var(--accent);
+  --brand-dark: var(--text-heading);
+  --brand-brass: var(--accent);
+  --brand-light: var(--bg-base);
+  --brand-border: var(--border-ui);
+  --brand-muted: var(--text-body);
+  --brand-white: var(--bg-surface);
+}
+
+/* 7. Roasted Espresso & Raw Bronze (Luxury Italian Joinery & Millwork) */
+[data-theme="espresso-bronze"] {
+  --bg-base: #1A1412;
+  --bg-alt: #120D0C;
+  --bg-surface: #261D1A;
+  --bg-contrast: #0A0706;
+  --text-heading: #FAF4F0;
+  --text-body: #B5A49D;
+  --text-muted: #786B65;
+  --accent: #DDA15E;
+  --accent-hover: #C58A47;
+  --border-ui: #3B2D27;
+
+  /* Backward compatibility bridge */
+  --bg-page: var(--bg-base);
+  --bg-primary: var(--bg-base);
+  --bg-card: var(--bg-surface);
+  --border-subtle: var(--border-ui);
+  --border-primary: var(--border-ui);
+  --text-primary: var(--text-heading);
+  --text-secondary: var(--text-body);
+  --accent-gold: var(--accent);
+  --brand-dark: var(--text-heading);
+  --brand-brass: var(--accent);
+  --brand-light: var(--bg-base);
+  --brand-border: var(--border-ui);
+  --brand-muted: var(--text-body);
+  --brand-white: var(--bg-surface);
+}
+
+/* 8. Nordic Travertine & Smoked Walnut (Bespoke Editorial Luxury) */
+[data-theme="nordic-travertine"] {
+  --bg-base: #EFECE6;        /* Natural Italian Travertine / Warm Chalk */
+  --bg-alt: #E5E0D8;         /* Limestone Accent for Alternating Sections */
+  --bg-surface: #F8F6F2;     /* Elevated Warm Alabaster Card Surfaces */
+  --bg-contrast: #181513;    /* Smoked Dark Walnut for Hero & Heavy Footers */
+  --text-heading: #1F1B18;   /* Deep Architectural Espresso */
+  --text-body: #544E48;      /* Warm Graphite Paragraphs */
+  --text-muted: #8C827A;     /* Muted Sandstone Metadata & Badges */
+  --accent: #B38646;         /* Hand-Brushed Champagne Brass Accent */
+  --accent-hover: #986E32;   /* Burnished Raw Brass Hover */
+  --border-ui: #D8D2C7;      /* Precise Architectural Hairline Dividers */
+
+  /* Backward compatibility bridge */
+  --bg-page: var(--bg-base);
+  --bg-primary: var(--bg-base);
+  --bg-card: var(--bg-surface);
+  --border-subtle: var(--border-ui);
+  --border-primary: var(--border-ui);
+  --text-primary: var(--text-heading);
+  --text-secondary: var(--text-body);
+  --accent-gold: var(--accent);
+  --brand-dark: var(--text-heading);
+  --brand-brass: var(--accent);
+  --brand-light: var(--bg-base);
+  --brand-border: var(--border-ui);
+  --brand-muted: var(--text-body);
+  --brand-white: var(--bg-surface);
 }
 
 @theme inline {
-  --color-bg-primary: var(--bg-primary);
+  --color-bg-base: var(--bg-base);
+  --color-bg-alt: var(--bg-alt);
   --color-bg-surface: var(--bg-surface);
+  --color-bg-contrast: var(--bg-contrast);
+  --color-text-heading: var(--text-heading);
+  --color-text-body: var(--text-body);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-border-ui: var(--border-ui);
+
+  --color-bg-page: var(--bg-page);
+  --color-bg-card: var(--bg-card);
+  --color-border-subtle: var(--border-subtle);
+  --color-bg-primary: var(--bg-primary);
+  --color-accent-gold: var(--accent-gold);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-border-primary: var(--border-primary);
-  --color-accent-gold: var(--accent-gold);
 
   --color-brand-dark: var(--brand-dark);
   --color-brand-brass: var(--brand-brass);
@@ -68,14 +285,18 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--bg-base);
+  color: var(--text-body);
   font-family: var(--font-sans);
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  color: var(--text-heading);
 }
 
 ::selection {
-  background: var(--accent-gold);
+  background: var(--accent);
   color: #FFFFFF;
 }
 
@@ -84,6 +305,6 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--accent-gold);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }

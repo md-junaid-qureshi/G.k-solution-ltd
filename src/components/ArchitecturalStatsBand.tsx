@@ -38,7 +38,7 @@ export default function ArchitecturalStatsBand() {
   return (
     <section
       aria-label="GK Space Solutions Architectural Credentials"
-      className="relative border-y border-[var(--border-primary)] bg-[var(--bg-surface)] py-12 sm:py-16 transition-colors duration-300"
+      className="relative border-y border-[var(--border-ui)] bg-[var(--bg-alt)] py-12 sm:py-16 transition-colors duration-300"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-[var(--border-primary)]">

@@ -52,7 +52,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${montserrat.variable} ${playfair.variable}`}
     >
-      <body className="flex min-h-screen flex-col antialiased bg-[var(--bg-primary)] text-[var(--text-primary)]">
+      <body className="flex min-h-screen flex-col antialiased bg-[var(--bg-page)] text-[var(--text-primary)] transition-colors duration-300">
         <ThemeProvider>
           <Navbar />
           <main className="flex-1 pt-[85px] sm:pt-[100px]">{children}</main>

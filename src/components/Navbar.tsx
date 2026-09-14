@@ -235,7 +235,7 @@ export default function Navbar() {
               <span className="text-xs font-mono text-[var(--text-secondary)] uppercase tracking-wider">
                 Theme
               </span>
-              <ThemeToggle />
+              <ThemeToggle direction="up" align="right" />
             </div>
 
             <a
