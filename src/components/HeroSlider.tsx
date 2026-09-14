@@ -168,8 +168,8 @@ export default function HeroSlider() {
             />
           </motion.div>
 
-          {/* Subtle dark architectural gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
+          {/* Dedicated dark gradient scrim for 100% typography legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/60 pointer-events-none" />
         </motion.div>
       </AnimatePresence>
 
@@ -206,23 +206,23 @@ export default function HeroSlider() {
             className="flex flex-col items-center justify-center max-w-4xl w-full min-h-[380px] sm:min-h-[420px] md:min-h-[460px]"
           >
             {/* Top Editorial Pill */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-black/40 px-3.5 py-1 sm:px-4 sm:py-1.5 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#C5A059]" />
-              <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.2em] text-[#C5A059] uppercase font-mono">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-3.5 py-1 sm:px-4 sm:py-1.5 backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+              <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.2em] text-white/90 uppercase font-mono">
                 {slide.tagline}
               </span>
             </div>
 
             {/* Main Headline - Editorial Serif */}
             <div className="mt-6 sm:mt-8 min-h-[64px] sm:min-h-[88px] md:min-h-[140px] lg:min-h-[160px] flex items-center justify-center w-full">
-              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-white leading-tight sm:leading-[1.12]">
+              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight !text-white drop-shadow-md leading-tight sm:leading-[1.12]">
                 {slide.heading}
               </h1>
             </div>
 
-            {/* Subheading - Subtle Warm Tone */}
+            {/* Subheading - High-Contrast Pure White */}
             <div className="mt-4 sm:mt-6 min-h-[44px] sm:min-h-[56px] flex items-center justify-center w-full">
-              <p className="max-w-2xl text-xs sm:text-base md:text-lg text-neutral-200 font-sans leading-relaxed px-2 sm:px-0">
+              <p className="max-w-2xl text-xs sm:text-base md:text-lg text-white/85 drop-shadow-sm font-sans leading-relaxed px-2 sm:px-0">
                 {slide.subheading}
               </p>
             </div>
